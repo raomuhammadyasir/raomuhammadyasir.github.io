@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rao Muhammad Yasir | MS Office Expert</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Word, Excel, PowerPoint professional portfolio.">
+  <meta property="og:title" content="Rao Muhammad Yasir | MS Office Expert">
+  <meta property="og:description" content="Professional portfolio showcasing skills and projects in Word, Excel, and PowerPoint.">
   <style>
     :root {
       --bg: #f4f6f9;
@@ -26,9 +29,7 @@
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
@@ -52,16 +53,8 @@
       background: linear-gradient(135deg, #1e3a8a, #3b82f6);
       color: white;
     }
-    header h1 {
-      font-size: 2.7rem;
-      margin-bottom: 0.5rem;
-      animation: fadeIn 1s ease-in-out;
-    }
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      animation: fadeIn 2s ease-in-out;
-    }
+    header h1 { font-size: 2.7rem; margin-bottom: 0.5rem; animation: fadeIn 1s ease-in-out; }
+    header p { font-size: 1.2rem; opacity: 0.9; animation: fadeIn 2s ease-in-out; }
     nav {
       background: var(--card);
       text-align: center;
@@ -78,10 +71,7 @@
       font-weight: 500;
       transition: 0.3s;
     }
-    nav a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
+    nav a:hover { color: var(--accent); text-decoration: underline; }
     #theme-toggle {
       background: var(--accent);
       color: white;
@@ -93,23 +83,15 @@
       margin-left: 1rem;
       transition: 0.3s;
     }
-    #theme-toggle:hover {
-      opacity: 0.8;
-    }
-    main {
-      max-width: 1100px;
-      margin: auto;
-    }
+    #theme-toggle:hover { opacity: 0.8; }
+    main { max-width: 1100px; margin: auto; }
     section {
       padding: 3rem 1.5rem;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
     }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    section.visible { opacity: 1; transform: translateY(0); }
     h2 {
       text-align: center;
       font-size: 1.9rem;
@@ -133,19 +115,14 @@
       transform: translateY(-5px) scale(1.03);
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
-    .card img {
-      width: 65px;
-      margin-bottom: 1rem;
-    }
+    .card img { width: 65px; margin-bottom: 1rem; }
     .projects img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 0.8rem;
       transition: transform 0.3s ease;
     }
-    .projects img:hover {
-      transform: scale(1.05);
-    }
+    .projects img:hover { transform: scale(1.05); }
     .btn {
       display: inline-block;
       background: var(--accent);
@@ -156,10 +133,7 @@
       text-decoration: none;
       transition: 0.3s;
     }
-    .btn:hover {
-      background: #2563eb;
-      transform: translateY(-2px);
-    }
+    .btn:hover { background: #2563eb; transform: translateY(-2px); }
     footer {
       background: var(--card);
       color: var(--text);
@@ -169,19 +143,9 @@
       border-top: 1px solid rgba(0,0,0,0.1);
     }
     /* Skill bars */
-    .skill {
-      margin: 1rem 0;
-    }
-    .skill-name {
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-    }
-    .skill-bar {
-      background: var(--scroll-bg);
-      border-radius: 8px;
-      overflow: hidden;
-      height: 15px;
-    }
+    .skill { margin: 1rem 0; }
+    .skill-name { font-weight: 500; margin-bottom: 0.3rem; }
+    .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow: hidden; height: 15px; }
     .skill-fill {
       height: 100%;
       background: var(--accent);
@@ -189,10 +153,19 @@
       border-radius: 8px;
       transition: width 1s ease-in-out;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Testimonials */
+    .testimonial-card p { font-style: italic; }
+    /* Stats */
+    .stat h3 { font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem; }
+    /* Back to top */
+    #topBtn {
+      position: fixed; bottom: 20px; right: 20px; display: none;
+      background: var(--accent); color: white; border: none; border-radius: 50%;
+      width: 45px; height: 45px; cursor: pointer; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: 0.3s;
     }
+    #topBtn:hover { transform: translateY(-2px); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
@@ -209,19 +182,22 @@
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#certificates">Certificates</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#stats">Achievements</a>
     <a href="#contact">Contact</a>
     <button id="theme-toggle">🌙</button>
   </nav>
 
   <main>
+    <!-- About -->
     <section id="about">
       <h2>💡 About Me</h2>
       <p style="text-align:center; max-width:850px; margin:auto;">
-        I’m <strong>Rao Muhammad Yasir</strong> — a skilled <b>Microsoft Office Specialist</b> with expertise in Word, Excel, and PowerPoint.  
-        I help professionals and organizations work efficiently by combining <b>accuracy</b>, <b>clarity</b>, and <b>visual appeal</b> in every project.
+        I’m <strong>Rao Muhammad Yasir</strong>, a skilled <b>Microsoft Office Specialist</b>. I help professionals work efficiently with Word, Excel, and PowerPoint by combining <b>accuracy</b>, <b>clarity</b>, and <b>visual appeal</b>.
       </p>
     </section>
 
+    <!-- Skills -->
     <section id="skills">
       <h2>🧠 Core Skills</h2>
       <div class="grid">
@@ -229,32 +205,24 @@
           <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word">
           <h3>MS Word</h3>
           <p>Formatting, reports, templates, mail merges.</p>
-          <div class="skill">
-            <div class="skill-name">Proficiency</div>
-            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
-          </div>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div></div>
         </div>
         <div class="card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel">
           <h3>MS Excel</h3>
           <p>Data entry, analysis, formulas, dashboards.</p>
-          <div class="skill">
-            <div class="skill-name">Proficiency</div>
-            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
-          </div>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div></div>
         </div>
         <div class="card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint">
           <h3>MS PowerPoint</h3>
-          <p>Presentation design, transitions, storytelling.</p>
-          <div class="skill">
-            <div class="skill-name">Proficiency</div>
-            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
-          </div>
+          <p>Presentation design, storytelling, visuals.</p>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div></div>
         </div>
       </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects">
       <h2>📁 Featured Projects</h2>
       <div class="grid projects">
@@ -262,41 +230,78 @@
           <img src="assets/images/excel-project.png" alt="Excel Inventory System">
           <h3>Excel Inventory System</h3>
           <p>Automated record keeping using formulas and data validation.</p>
+          <a href="https://github.com/yourusername/excel-project" target="_blank">View on GitHub</a>
         </div>
         <div class="card">
           <img src="assets/images/word-template.png" alt="Resume Template">
           <h3>Resume Template Design</h3>
           <p>Elegant Word templates for professional resumes.</p>
+          <a href="https://github.com/yourusername/word-template" target="_blank">View on GitHub</a>
         </div>
         <div class="card">
           <img src="assets/images/ppt-project.png" alt="PowerPoint NGO Presentation">
           <h3>Presentation for NGO</h3>
           <p>Awareness campaign deck using visuals and animations.</p>
+          <a href="https://github.com/yourusername/ppt-project" target="_blank">View on GitHub</a>
         </div>
       </div>
     </section>
 
+    <!-- Certificates -->
     <section id="certificates">
       <h2>🏅 Certificates</h2>
       <div class="grid">
         <div class="card">
           <h3>Microsoft Office (STICS Rawalpindi)</h3>
-          <p>Trained and verified in MS Word, Excel, and PowerPoint.</p>
+          <p>Trained and verified in Word, Excel, PowerPoint.</p>
         </div>
         <div class="card">
           <h3>Data Management</h3>
-          <p>Understanding of structured data entry and reporting accuracy.</p>
+          <p>Understanding structured data entry and reporting accuracy.</p>
         </div>
       </div>
     </section>
 
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <h2>💬 Testimonials</h2>
+      <div class="grid">
+        <div class="card testimonial-card">
+          <p>"Yasir created an Excel dashboard that saved our team hours!"</p>
+          <strong>- John Doe</strong>
+        </div>
+        <div class="card testimonial-card">
+          <p>"The Word templates he designed look extremely professional."</p>
+          <strong>- Jane Smith</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="stats">
+      <h2>📊 Achievements</h2>
+      <div class="grid">
+        <div class="card stat"><h3>50+</h3><p>Word Templates</p></div>
+        <div class="card stat"><h3>20+</h3><p>Excel Dashboards</p></div>
+        <div class="card stat"><h3>100+</h3><p>Presentations Delivered</p></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
       <h2>📬 Contact Me</h2>
       <p style="text-align:center;">
         📧 <a href="mailto:raomuhammadyasir@gmail.com">raomuhammadyasir@gmail.com</a><br>
         🔗 <a href="https://linkedin.com/in/yourlink" target="_blank">linkedin.com/in/yourlink</a><br><br>
-        <a href="assets/CV.pdf" class="btn" download>⬇ Download My CV</a>
       </p>
+      <form action="https://formspree.io/f/yourformid" method="POST" style="max-width:500px;margin:auto;display:flex;flex-direction:column;gap:0.8rem;">
+        <input type="text" name="name" placeholder="Your Name" required style="padding:0.6rem;border-radius:6px;border:1px solid #ccc;">
+        <input type="email" name="email" placeholder="Your Email" required style="padding:0.6rem;border-radius:6px;border:1px solid #ccc;">
+        <textarea name="message" placeholder="Your Message" required style="padding:0.6rem;border-radius:6px;border:1px solid #ccc;resize:none;"></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <br>
+      <a href="assets/CV.pdf" class="btn" download>⬇ Download My CV</a>
     </section>
   </main>
 
@@ -304,31 +309,26 @@
     © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com/yourusername/yourrepo" target="_blank">GitHub Pages</a>
   </footer>
 
+  <button id="topBtn">⬆</button>
+
   <script>
     // Theme toggle with memory
     const toggle = document.getElementById('theme-toggle');
     if(localStorage.getItem('theme') === 'dark') {
-      document.body.dataset.theme = 'dark';
-      toggle.textContent = '☀️';
+      document.body.dataset.theme = 'dark'; toggle.textContent = '☀️';
     }
     toggle.addEventListener('click', () => {
       if(document.body.dataset.theme === 'dark') {
-        document.body.dataset.theme = '';
-        toggle.textContent = '🌙';
-        localStorage.setItem('theme', '');
+        document.body.dataset.theme = ''; toggle.textContent = '🌙'; localStorage.setItem('theme', '');
       } else {
-        document.body.dataset.theme = 'dark';
-        toggle.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
+        document.body.dataset.theme = 'dark'; toggle.textContent = '☀️'; localStorage.setItem('theme', 'dark');
       }
     });
 
-    // Section fade-in on scroll
+    // Section fade-in
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
 
@@ -337,9 +337,13 @@
     window.addEventListener('scroll', () => {
       const scrollTop = document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / scrollHeight) * 100;
-      scrollBar.style.width = scrollPercent + "%";
+      scrollBar.style.width = (scrollTop/scrollHeight*100) + "%";
     });
+
+    // Back to top button
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+    topBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
   </script>
 
 </body>
