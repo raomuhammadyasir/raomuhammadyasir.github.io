@@ -32,12 +32,10 @@
     /* Scroll progress bar */
     #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
 
-    /* Header */
     header { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
     header h1 { font-size:2.7rem; margin-bottom:0.5rem; animation: fadeIn 1s ease-in-out; }
     header p { font-size:1.2rem; opacity:0.9; animation: fadeIn 2s ease-in-out; }
 
-    /* Navigation */
     nav { background: var(--card); text-align:center; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:50; }
     nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; }
     nav a:hover { color: var(--accent); text-decoration: underline; }
@@ -45,7 +43,6 @@
     #theme-toggle:hover { opacity:0.8; }
 
     main { max-width: 1100px; margin:auto; }
-
     section { padding: 3rem 1.5rem; opacity:0; transform: translateY(20px); transition: all 0.6s ease; }
     section.visible { opacity:1; transform: translateY(0); }
 
@@ -62,6 +59,8 @@
     .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; }
     .btn:hover { background:#2563eb; transform: translateY(-2px); }
 
+    footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
+
     .skill { margin: 1rem 0; }
     .skill-name { font-weight:500; margin-bottom:0.3rem; }
     .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
@@ -69,21 +68,33 @@
 
     .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
 
+    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
+    #topBtn:hover { transform: translateY(-2px); }
+
+    /* Floating CV Button */
+    .floating-cv {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+    .floating-cv:hover {
+      transform: translateY(-3px);
+      background: #2563eb;
+    }
+
     input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; }
     input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
     button[type="submit"] { cursor:pointer; }
     form { display:flex; flex-direction:column; gap:0.8rem; max-width:500px; margin:auto; }
-
-    footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
-
-    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
-    #topBtn:hover { transform: translateY(-2px); }
-
-    /* CV Card */
-    .cv-card { max-width:380px; margin:2rem auto; text-align:center; background: var(--card); border-radius:20px; padding:2rem; box-shadow:0 8px 25px rgba(0,0,0,0.15); transition: transform 0.3s ease; }
-    .cv-card:hover { transform: translateY(-5px); }
-    .cv-card h3 { color: var(--accent); margin-bottom:0.5rem; }
-    .cv-card p { color: var(--text); opacity:0.85; margin-bottom:1.5rem; }
 
     @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
   </style>
@@ -104,13 +115,11 @@
     <a href="#projects">Projects</a>
     <a href="#certificates">Certificates</a>
     <a href="#stats">Achievements</a>
-    <a href="#cv">CV</a>
     <a href="#contact">Contact</a>
     <button id="theme-toggle">🌙</button>
   </nav>
 
   <main>
-
     <!-- About -->
     <section id="about">
       <h2>💡 About Me</h2>
@@ -147,17 +156,48 @@
     <!-- Projects -->
     <section id="projects">
       <h2>📁 Featured Projects</h2>
+
       <h3 style="text-align:center; color:var(--text); margin-bottom:1rem;">MS Word Projects</h3>
-      <div class="grid">
-        <div class="card"><a href="word1.png" target="_blank"><img src="word1.png" alt="Word Project 1"></a><h3>Word Project 1</h3><p>Professional Transport Company Flyer Design</p></div>
-        <div class="card"><a href="word2.png" target="_blank"><img src="word2.png" alt="Word Project 2"></a><h3>Word Project 2</h3><p>High-Quality Flyer Design Tailored for Transport Companies</p></div>
-        <div class="card"><a href="word3.png" target="_blank"><img src="word3.png" alt="Word Project 3"></a><h3>Word Project 3</h3><p>Eye-Catching Flyer Designs for Transport Businesses</p></div>
+      <div class="grid projects">
+        <div class="card">
+          <a href="word1.png" target="_blank">
+            <img src="word1.png" alt="Word Project 1">
+          </a>
+          <h3>Word Project 1</h3>
+          <p>Professional company document template.</p>
+        </div>
+        <div class="card">
+          <a href="word2.png" target="_blank">
+            <img src="word2.png" alt="Word Project 2">
+          </a>
+          <h3>Word Project 2</h3>
+          <p>Structured report layout for business use.</p>
+        </div>
+        <div class="card">
+          <a href="word3.png" target="_blank">
+            <img src="word3.png" alt="Word Project 3">
+          </a>
+          <h3>Word Project 3</h3>
+          <p>Modern template for professional proposals.</p>
+        </div>
       </div>
 
       <h3 style="text-align:center; color:var(--text); margin:2rem 0 1rem;">MS Excel Projects</h3>
-      <div class="grid">
-        <div class="card"><a href="excel1.png" target="_blank"><img src="excel1.png" alt="Excel Project 1"></a><h3>Business Sales Dashboard</h3><p>Interactive dashboard with auto-calculated sales insights.</p></div>
-        <div class="card"><a href="excel2.png" target="_blank"><img src="excel2.png" alt="Excel Project 2"></a><h3>Employee Attendance Tracker</h3><p>Automated attendance sheet with total present/absent count.</p></div>
+      <div class="grid projects">
+        <div class="card">
+          <a href="excel1.png" target="_blank">
+            <img src="excel1.png" alt="Excel Project 1">
+          </a>
+          <h3>Business Sales Dashboard</h3>
+          <p>Interactive dashboard with auto-calculated sales insights.</p>
+        </div>
+        <div class="card">
+          <a href="excel2.png" target="_blank">
+            <img src="excel2.png" alt="Excel Project 2">
+          </a>
+          <h3>Employee Attendance Tracker</h3>
+          <p>Automated attendance sheet with total present/absent count.</p>
+        </div>
       </div>
     </section>
 
@@ -165,8 +205,14 @@
     <section id="certificates">
       <h2>🏅 Certificates</h2>
       <div class="grid">
-        <div class="card"><h3>Microsoft Office (STICS Rawalpindi)</h3><p>Trained and verified in Word, Excel, PowerPoint.</p></div>
-        <div class="card"><h3>Data Management</h3><p>Understanding structured data entry and reporting accuracy.</p></div>
+        <div class="card">
+          <h3>Microsoft Office (STICS Rawalpindi)</h3>
+          <p>Trained and verified in Word, Excel, PowerPoint.</p>
+        </div>
+        <div class="card">
+          <h3>Data Management</h3>
+          <p>Understanding structured data entry and reporting accuracy.</p>
+        </div>
       </div>
     </section>
 
@@ -180,16 +226,6 @@
       </div>
     </section>
 
-    <!-- CV Section -->
-    <section id="cv">
-      <div class="cv-card">
-        <div style="font-size:3rem; margin-bottom:1rem;">💼</div>
-        <h3>Download My CV</h3>
-        <p>Get my full Microsoft Office portfolio with Word, Excel & PowerPoint projects.</p>
-        <a href="YASIR_CV.pdf" download class="btn">📄 Download CV</a>
-      </div>
-    </section>
-
     <!-- Contact -->
     <section id="contact">
       <h2>📬 Contact Me</h2>
@@ -200,8 +236,9 @@
         <button type="submit" class="btn">Send Message</button>
       </form>
     </section>
-
   </main>
+
+  <a href="YASIR_CV.pdf" class="floating-cv" download>📄 CV</a>
 
   <footer>
     © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com" target="_blank">GitHub Pages</a>
@@ -210,11 +247,9 @@
   <button id="topBtn">⬆</button>
 
   <script>
-    // Cursor
     const cursor=document.getElementById('cursor');
     document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
 
-    // Theme toggle
     const toggle=document.getElementById('theme-toggle');
     if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark';toggle.textContent='☀️';}
     toggle.addEventListener('click',()=>{ 
@@ -222,28 +257,48 @@
       else {document.body.dataset.theme='dark';toggle.textContent='☀️';localStorage.setItem('theme','dark');}
     });
 
-    // Section animations
     const sections=document.querySelectorAll('section');
-    const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });},{threshold:0.1});
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    },{threshold:0.1});
     sections.forEach(section=>observer.observe(section));
 
-    // Scroll bar
     const scrollBar=document.getElementById('scrollBar');
-    window.addEventListener('scroll',()=>{ const scrollTop=document.documentElement.scrollTop; const scrollHeight=document.documentElement.scrollHeight-window.innerHeight; scrollBar.style.width=(scrollTop/scrollHeight*100)+"%"; });
+    window.addEventListener('scroll',()=>{
+      const scrollTop=document.documentElement.scrollTop;
+      const scrollHeight=document.documentElement.scrollHeight-window.innerHeight;
+      scrollBar.style.width=(scrollTop/scrollHeight*100)+"%";
+    });
 
-    // Back to top
     const topBtn=document.getElementById('topBtn');
-    window.addEventListener('scroll',()=>{ topBtn.style.display=window.scrollY>300?'block':'none'; });
+    window.addEventListener('scroll',()=>{topBtn.style.display=window.scrollY>300?'block':'none';});
     topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-    // Skills fill animation
     const skillFills=document.querySelectorAll('.skill-fill');
-    const skillObserver=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); } });},{threshold:0.5});
+    const skillObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.style.width=entry.target.dataset.fill;skillObserver.unobserve(entry.target);}
+      });
+    },{threshold:0.5});
     skillFills.forEach(fill=>skillObserver.observe(fill));
 
-    // Achievement counters
     const counters=document.querySelectorAll('.stat h3');
-    const counterObserver=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ const updateCount=(el)=>{ const target=parseInt(el.dataset.target); let count=parseInt(el.innerText); const increment=Math.ceil(target/100); if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target; } updateCount(entry.target); counterObserver.unobserve(entry.target); } });},{threshold:0.5});
+    const counterObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const updateCount=(el)=>{
+            const target=parseInt(el.dataset.target);
+            let count=parseInt(el.innerText);
+            const increment=Math.ceil(target/100);
+            if(count<target){el.innerText=count+increment;setTimeout(()=>updateCount(el),20);} else el.innerText=target;
+          }
+          updateCount(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.5});
     counters.forEach(counter=>counterObserver.observe(counter));
   </script>
 </body>
