@@ -26,8 +26,10 @@
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
 
+    /* Custom cursor */
     #cursor { position: fixed; top: 0; left: 0; width: var(--cursor-size); height: var(--cursor-size); background: var(--accent); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); transition: 0.1s ease; z-index:1000; mix-blend-mode: difference; }
 
+    /* Scroll progress bar */
     #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
 
     header { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
@@ -66,8 +68,28 @@
 
     .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
 
-    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; }
+    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
     #topBtn:hover { transform: translateY(-2px); }
+
+    /* Floating CV Button */
+    .floating-cv {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+    .floating-cv:hover {
+      transform: translateY(-3px);
+      background: #2563eb;
+    }
 
     input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; }
     input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
@@ -135,38 +157,46 @@
     <section id="projects">
       <h2>📁 Featured Projects</h2>
 
-      <!-- Word Projects -->
-      <h3 style="text-align:center; margin-bottom:1rem;">Word Projects</h3>
+      <h3 style="text-align:center; color:var(--text); margin-bottom:1rem;">MS Word Projects</h3>
       <div class="grid projects">
         <div class="card">
-          <a href="word1.png" target="_blank"><img src="word1.png" alt="Word Project 1"></a>
+          <a href="word1.png" target="_blank">
+            <img src="word1.png" alt="Word Project 1">
+          </a>
           <h3>Word Project 1</h3>
-          <p>Professional document design for a transport company.</p>
+          <p>Professional company document template.</p>
         </div>
         <div class="card">
-          <a href="word2.png" target="_blank"><img src="word2.png" alt="Word Project 2"></a>
+          <a href="word2.png" target="_blank">
+            <img src="word2.png" alt="Word Project 2">
+          </a>
           <h3>Word Project 2</h3>
-          <p>Professional document design for a transport company.</p>
+          <p>Structured report layout for business use.</p>
         </div>
         <div class="card">
-          <a href="word3.png" target="_blank"><img src="word3.png" alt="Word Project 3"></a>
+          <a href="word3.png" target="_blank">
+            <img src="word3.png" alt="Word Project 3">
+          </a>
           <h3>Word Project 3</h3>
-          <p>Professional document design for a transport company.</p>
+          <p>Modern template for professional proposals.</p>
         </div>
       </div>
 
-      <!-- Excel Projects -->
-      <h3 style="text-align:center; margin:2rem 0 1rem;">Excel Projects</h3>
+      <h3 style="text-align:center; color:var(--text); margin:2rem 0 1rem;">MS Excel Projects</h3>
       <div class="grid projects">
         <div class="card">
-          <a href="excel1.png" target="_blank"><img src="excel1.png" alt="Excel Project 1"></a>
-          <h3>Excel Project 1</h3>
-          <p>Interactive Sales Dashboard with charts and KPIs.</p>
+          <a href="excel1.png" target="_blank">
+            <img src="excel1.png" alt="Excel Project 1">
+          </a>
+          <h3>Business Sales Dashboard</h3>
+          <p>Interactive dashboard with auto-calculated sales insights.</p>
         </div>
         <div class="card">
-          <a href="excel2.png" target="_blank"><img src="excel2.png" alt="Excel Project 2"></a>
-          <h3>Excel Project 2</h3>
-          <p>Automated Employee Attendance Tracker with summary and % stats.</p>
+          <a href="excel2.png" target="_blank">
+            <img src="excel2.png" alt="Excel Project 2">
+          </a>
+          <h3>Employee Attendance Tracker</h3>
+          <p>Automated attendance sheet with total present/absent count.</p>
         </div>
       </div>
     </section>
@@ -191,24 +221,24 @@
       <h2>📊 Achievements</h2>
       <div class="grid">
         <div class="card stat"><h3 data-target="50">0</h3><p>Word Templates</p></div>
-        <div class="card stat"><h3 data-target="30">0</h3><p>Excel Dashboards</p></div>
-        <div class="card stat"><h3 data-target="20">0</h3><p>Presentations Delivered</p></div>
+        <div class="card stat"><h3 data-target="20">0</h3><p>Excel Dashboards</p></div>
+        <div class="card stat"><h3 data-target="100">0</h3><p>Presentations Delivered</p></div>
       </div>
     </section>
 
     <!-- Contact -->
     <section id="contact">
-      <h2>📬 Contact & CV</h2>
+      <h2>📬 Contact Me</h2>
       <form action="https://formspree.io/f/xeovjrgb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
-      <br>
-      <a href="YASIR_CV.pdf" class="btn" download>⬇ Download My CV</a>
     </section>
   </main>
+
+  <a href="YASIR_CV.pdf" class="floating-cv" download>📄 CV</a>
 
   <footer>
     © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com" target="_blank">GitHub Pages</a>
@@ -217,31 +247,39 @@
   <button id="topBtn">⬆</button>
 
   <script>
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
+    const cursor=document.getElementById('cursor');
+    document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
 
-    const toggle = document.getElementById('theme-toggle');
-    if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
+    const toggle=document.getElementById('theme-toggle');
+    if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark';toggle.textContent='☀️';}
     toggle.addEventListener('click',()=>{ 
-      if(document.body.dataset.theme==='dark'){ document.body.dataset.theme=''; toggle.textContent='🌙'; localStorage.setItem('theme',''); } 
-      else { document.body.dataset.theme='dark'; toggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
+      if(document.body.dataset.theme==='dark'){document.body.dataset.theme='';toggle.textContent='🌙';localStorage.setItem('theme','');} 
+      else {document.body.dataset.theme='dark';toggle.textContent='☀️';localStorage.setItem('theme','dark');}
     });
 
     const sections=document.querySelectorAll('section');
-    const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });},{threshold:0.1});
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    },{threshold:0.1});
     sections.forEach(section=>observer.observe(section));
 
     const scrollBar=document.getElementById('scrollBar');
-    window.addEventListener('scroll',()=>{ const scrollTop=document.documentElement.scrollTop; const scrollHeight=document.documentElement.scrollHeight-window.innerHeight; scrollBar.style.width=(scrollTop/scrollHeight*100)+"%"; });
+    window.addEventListener('scroll',()=>{
+      const scrollTop=document.documentElement.scrollTop;
+      const scrollHeight=document.documentElement.scrollHeight-window.innerHeight;
+      scrollBar.style.width=(scrollTop/scrollHeight*100)+"%";
+    });
 
     const topBtn=document.getElementById('topBtn');
-    window.addEventListener('scroll',()=>{ topBtn.style.display=window.scrollY>300?'block':'none'; });
+    window.addEventListener('scroll',()=>{topBtn.style.display=window.scrollY>300?'block':'none';});
     topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
     const skillFills=document.querySelectorAll('.skill-fill');
     const skillObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
-        if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); }
+        if(entry.isIntersecting){entry.target.style.width=entry.target.dataset.fill;skillObserver.unobserve(entry.target);}
       });
     },{threshold:0.5});
     skillFills.forEach(fill=>skillObserver.observe(fill));
@@ -254,7 +292,7 @@
             const target=parseInt(el.dataset.target);
             let count=parseInt(el.innerText);
             const increment=Math.ceil(target/100);
-            if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target;
+            if(count<target){el.innerText=count+increment;setTimeout(()=>updateCount(el),20);} else el.innerText=target;
           }
           updateCount(entry.target);
           counterObserver.unobserve(entry.target);
@@ -265,4 +303,3 @@
   </script>
 </body>
 </html>
-
