@@ -209,7 +209,7 @@
       </div>
     </section>
 
-    <!-- Contact / Newsletter -->
+    <!-- Contact / Newsletter / CV -->
     <section id="contact">
       <h2>📬 Contact & Newsletter</h2>
       <form action="https://formspree.io/f/yourformid" method="POST">
@@ -219,7 +219,12 @@
         <button type="submit" class="btn">Send Message / Subscribe</button>
       </form>
       <br>
-      <a href="assets/CV.pdf" class="btn" download>⬇ Download My CV</a>
+      <!-- CV Card -->
+      <div class="card" style="max-width:400px; margin:auto; text-align:center; padding:1.5rem;">
+        <h3>📄 Download My CV</h3>
+        <p>Get a copy of my Microsoft Office Specialist CV.</p>
+        <a href="docs/YASIR_CV.pdf" class="btn" download target="_blank">⬇ Download CV</a>
+      </div>
     </section>
   </main>
 
@@ -258,29 +263,12 @@
 
     // Animate skill bars
     const skillFills=document.querySelectorAll('.skill-fill');
-    const skillObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); }
-      });
-    },{threshold:0.5});
+    const skillObserver=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); } });},{threshold:0.5});
     skillFills.forEach(fill=>skillObserver.observe(fill));
 
     // Animate counters
     const counters=document.querySelectorAll('.stat h3');
-    const counterObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          const updateCount=(el)=>{
-            const target=parseInt(el.dataset.target);
-            let count=parseInt(el.innerText);
-            const increment=Math.ceil(target/100);
-            if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target;
-          }
-          updateCount(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    },{threshold:0.5});
+    const counterObserver=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ const updateCount=(el)=>{ const target=parseInt(el.dataset.target); let count=parseInt(el.innerText); const increment=Math.ceil(target/100); if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target; } updateCount(entry.target); counterObserver.unobserve(entry.target); } });},{threshold:0.5});
     counters.forEach(counter=>counterObserver.observe(counter));
 
     // Testimonials slider
