@@ -23,30 +23,13 @@
       --accent: #60a5fa;
       --scroll-bg: #1e293b;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: 0.4s ease;
-    }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
+    
     /* Scroll progress bar */
-    #scrollBar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      background: var(--accent);
-      width: 0%;
-      z-index: 100;
-      transition: width 0.2s ease;
-    }
+    #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
+
     header {
       text-align: center;
       padding: 5rem 1rem;
@@ -55,6 +38,7 @@
     }
     header h1 { font-size: 2.7rem; margin-bottom: 0.5rem; animation: fadeIn 1s ease-in-out; }
     header p { font-size: 1.2rem; opacity: 0.9; animation: fadeIn 2s ease-in-out; }
+
     nav {
       background: var(--card);
       text-align: center;
@@ -64,108 +48,64 @@
       top: 0;
       z-index: 50;
     }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+    nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; }
     nav a:hover { color: var(--accent); text-decoration: underline; }
     #theme-toggle {
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 0.4rem 0.8rem;
-      cursor: pointer;
-      font-weight: 500;
-      margin-left: 1rem;
-      transition: 0.3s;
+      background: var(--accent); color:white; border:none; border-radius:8px; padding:0.4rem 0.8rem;
+      cursor:pointer; font-weight:500; margin-left:1rem; transition:0.3s;
     }
-    #theme-toggle:hover { opacity: 0.8; }
-    main { max-width: 1100px; margin: auto; }
-    section {
-      padding: 3rem 1.5rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
-    }
-    section.visible { opacity: 1; transform: translateY(0); }
-    h2 {
-      text-align: center;
-      font-size: 1.9rem;
-      margin-bottom: 1.8rem;
-      color: var(--accent);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
+    #theme-toggle:hover { opacity:0.8; }
+
+    main { max-width: 1100px; margin:auto; }
+
+    section { padding: 3rem 1.5rem; opacity:0; transform: translateY(20px); transition: all 0.6s ease; }
+    section.visible { opacity:1; transform: translateY(0); }
+
+    h2 { text-align:center; font-size:1.9rem; margin-bottom:1.8rem; color: var(--accent); }
+
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
+
     .card {
       background: var(--card);
       border-radius: 15px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       padding: 2rem;
       text-align: center;
-      transition: 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .card:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
+    .card:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+
     .card img { width: 65px; margin-bottom: 1rem; }
-    .projects img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 0.8rem;
-      transition: transform 0.3s ease;
-    }
+    .projects img { width:100%; border-radius:10px; margin-bottom:0.8rem; transition: transform 0.3s ease; }
     .projects img:hover { transform: scale(1.05); }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 0.8rem 1.4rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn:hover { background: #2563eb; transform: translateY(-2px); }
-    footer {
-      background: var(--card);
-      color: var(--text);
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(0,0,0,0.1);
-    }
+
+    .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; }
+    .btn:hover { background:#2563eb; transform: translateY(-2px); }
+
+    footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
+
     /* Skill bars */
     .skill { margin: 1rem 0; }
-    .skill-name { font-weight: 500; margin-bottom: 0.3rem; }
-    .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow: hidden; height: 15px; }
-    .skill-fill {
-      height: 100%;
-      background: var(--accent);
-      width: 0;
-      border-radius: 8px;
-      transition: width 1s ease-in-out;
-    }
-    /* Testimonials */
-    .testimonial-card p { font-style: italic; }
+    .skill-name { font-weight:500; margin-bottom:0.3rem; }
+    .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
+    .skill-fill { height:100%; background: var(--accent); width:0%; border-radius:8px; }
+
+    /* Testimonials slider */
+    .testimonial-container { position: relative; overflow:hidden; }
+    .testimonial-track { display:flex; transition: transform 0.5s ease-in-out; }
+    .testimonial-card { flex:0 0 100%; padding:1rem; }
+    .testimonial-card p { font-style:italic; }
+    .testimonial-nav { text-align:center; margin-top:1rem; }
+    .testimonial-nav button { background: var(--accent); color:white; border:none; border-radius:50%; width:25px; height:25px; margin:0 5px; cursor:pointer; }
+
     /* Stats */
-    .stat h3 { font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
+
     /* Back to top */
-    #topBtn {
-      position: fixed; bottom: 20px; right: 20px; display: none;
-      background: var(--accent); color: white; border: none; border-radius: 50%;
-      width: 45px; height: 45px; cursor: pointer; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: 0.3s;
-    }
+    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; }
     #topBtn:hover { transform: translateY(-2px); }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
   </style>
 </head>
 <body>
@@ -193,7 +133,7 @@
     <section id="about">
       <h2>💡 About Me</h2>
       <p style="text-align:center; max-width:850px; margin:auto;">
-        I’m <strong>Rao Muhammad Yasir</strong>, a skilled <b>Microsoft Office Specialist</b>. I help professionals work efficiently with Word, Excel, and PowerPoint by combining <b>accuracy</b>, <b>clarity</b>, and <b>visual appeal</b>.
+        I’m <strong>Rao Muhammad Yasir</strong>, a Microsoft Office Specialist who helps professionals work efficiently with Word, Excel, and PowerPoint by combining <b>accuracy</b>, <b>clarity</b>, and <b>visual appeal</b>.
       </p>
     </section>
 
@@ -205,19 +145,19 @@
           <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word">
           <h3>MS Word</h3>
           <p>Formatting, reports, templates, mail merges.</p>
-          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div></div>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="95%"></div></div></div>
         </div>
         <div class="card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel">
           <h3>MS Excel</h3>
           <p>Data entry, analysis, formulas, dashboards.</p>
-          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div></div>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div></div>
         </div>
         <div class="card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint">
           <h3>MS PowerPoint</h3>
           <p>Presentation design, storytelling, visuals.</p>
-          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div></div>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div></div>
         </div>
       </div>
     </section>
@@ -265,15 +205,17 @@
     <!-- Testimonials -->
     <section id="testimonials">
       <h2>💬 Testimonials</h2>
-      <div class="grid">
-        <div class="card testimonial-card">
-          <p>"Yasir created an Excel dashboard that saved our team hours!"</p>
-          <strong>- John Doe</strong>
+      <div class="testimonial-container">
+        <div class="testimonial-track">
+          <div class="testimonial-card card"><p>"Yasir created an Excel dashboard that saved our team hours!"</p><strong>- John Doe</strong></div>
+          <div class="testimonial-card card"><p>"The Word templates he designed look extremely professional."</p><strong>- Jane Smith</strong></div>
+          <div class="testimonial-card card"><p>"PowerPoint presentations were clear, concise, and visually appealing."</p><strong>- Ali Khan</strong></div>
         </div>
-        <div class="card testimonial-card">
-          <p>"The Word templates he designed look extremely professional."</p>
-          <strong>- Jane Smith</strong>
-        </div>
+      </div>
+      <div class="testimonial-nav">
+        <button data-slide="0"></button>
+        <button data-slide="1"></button>
+        <button data-slide="2"></button>
       </div>
     </section>
 
@@ -281,9 +223,9 @@
     <section id="stats">
       <h2>📊 Achievements</h2>
       <div class="grid">
-        <div class="card stat"><h3>50+</h3><p>Word Templates</p></div>
-        <div class="card stat"><h3>20+</h3><p>Excel Dashboards</p></div>
-        <div class="card stat"><h3>100+</h3><p>Presentations Delivered</p></div>
+        <div class="card stat"><h3 data-target="50">0</h3><p>Word Templates</p></div>
+        <div class="card stat"><h3 data-target="20">0</h3><p>Excel Dashboards</p></div>
+        <div class="card stat"><h3 data-target="100">0</h3><p>Presentations Delivered</p></div>
       </div>
     </section>
 
@@ -314,36 +256,64 @@
   <script>
     // Theme toggle with memory
     const toggle = document.getElementById('theme-toggle');
-    if(localStorage.getItem('theme') === 'dark') {
-      document.body.dataset.theme = 'dark'; toggle.textContent = '☀️';
-    }
-    toggle.addEventListener('click', () => {
-      if(document.body.dataset.theme === 'dark') {
-        document.body.dataset.theme = ''; toggle.textContent = '🌙'; localStorage.setItem('theme', '');
-      } else {
-        document.body.dataset.theme = 'dark'; toggle.textContent = '☀️'; localStorage.setItem('theme', 'dark');
-      }
+    if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
+    toggle.addEventListener('click',()=>{ 
+      if(document.body.dataset.theme==='dark'){ document.body.dataset.theme=''; toggle.textContent='🌙'; localStorage.setItem('theme',''); } 
+      else { document.body.dataset.theme='dark'; toggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
     });
 
     // Section fade-in
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    sections.forEach(section => observer.observe(section));
+    const sections=document.querySelectorAll('section');
+    const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });},{threshold:0.1});
+    sections.forEach(section=>observer.observe(section));
 
     // Scroll progress bar
-    const scrollBar = document.getElementById('scrollBar');
-    window.addEventListener('scroll', () => {
-      const scrollTop = document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      scrollBar.style.width = (scrollTop/scrollHeight*100) + "%";
-    });
+    const scrollBar=document.getElementById('scrollBar');
+    window.addEventListener('scroll',()=>{ const scrollTop=document.documentElement.scrollTop; const scrollHeight=document.documentElement.scrollHeight-window.innerHeight; scrollBar.style.width=(scrollTop/scrollHeight*100)+"%"; });
 
     // Back to top button
-    const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
-    topBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+    const topBtn=document.getElementById('topBtn');
+    window.addEventListener('scroll',()=>{ topBtn.style.display=window.scrollY>300?'block':'none'; });
+    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    // Animate skill bars
+    const skillFills=document.querySelectorAll('.skill-fill');
+    const skillObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); }
+      });
+    },{threshold:0.5});
+    skillFills.forEach(fill=>skillObserver.observe(fill));
+
+    // Animate counters
+    const counters=document.querySelectorAll('.stat h3');
+    const counterObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const updateCount=(el)=>{
+            const target=parseInt(el.dataset.target);
+            let count=parseInt(el.innerText);
+            const increment=Math.ceil(target/100);
+            if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target;
+          }
+          updateCount(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.5});
+    counters.forEach(counter=>counterObserver.observe(counter));
+
+    // Testimonials slider
+    const track=document.querySelector('.testimonial-track');
+    const slides=document.querySelectorAll('.testimonial-card');
+    const buttons=document.querySelectorAll('.testimonial-nav button');
+    let current=0;
+    buttons.forEach(btn=>{
+      btn.addEventListener('click',()=>{ current=parseInt(btn.dataset.slide); track.style.transform=`translateX(-${current*100}%)`; });
+    });
+    // Auto-slide every 5s
+    setInterval(()=>{ current=(current+1)%slides.length; track.style.transform=`translateX(-${current*100}%)`; },5000);
+
   </script>
 
 </body>
