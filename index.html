@@ -218,7 +218,9 @@
     <section id="about">
       <h2>💡 About Me</h2>
       <p class="section-text">
-        I am **Rao Muhammad Yasir**, a dedicated Microsoft Office Expert. I empower professionals and businesses to achieve peak efficiency by creating **visually compelling** and **functionally flawless** documents, spreadsheets, and presentations using my mastery of **Word, Excel, and PowerPoint**.
+        I am <strong>Rao Muhammad Yasir</strong>, a dedicated Microsoft Office Expert. I empower professionals and
+        businesses to achieve peak efficiency by creating <strong>visually compelling</strong> and <strong>functionally flawless</strong>
+        documents, spreadsheets, and presentations using my mastery of <strong>Word, Excel, and PowerPoint</strong>.
       </p>
     </section>
 
@@ -338,7 +340,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // --- 1. Typing Effect Logic ---
+        // --- 1. Typing Effect Logic (Increased Speed) ---
         const typedTextSpan = document.getElementById('typed-text');
         const phrases = [
             "Word | Excel | PowerPoint",
@@ -347,9 +349,10 @@
             "I craft compelling Presentations.",
             "Your Microsoft Office Expert."
         ];
-        const typingDelay = 100; // Speed of typing
-        const deletingDelay = 50; // Speed of deleting
-        const pauseDelay = 1500; // Pause at end of sentence
+        // INCREASED SPEED HERE
+        const typingDelay = 60; // Faster typing speed (was 100)
+        const deletingDelay = 30; // Faster deleting speed (was 50)
+        const pauseDelay = 1500; // Pause at end of sentence (same)
 
         let phraseIndex = 0;
         let charIndex = 0;
@@ -384,7 +387,6 @@
             }
         }
         
-        // Start the typing effect when the DOM is loaded
         typeWriter();
 
 
