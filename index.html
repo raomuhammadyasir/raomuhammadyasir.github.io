@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rao Muhammad Yasir | MS Office Expert</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Word, Excel, PowerPoint professional portfolio.">
   <style>
+    /* 🎨 Theme Variables */
     :root {
       --bg: #f4f6f9;
       --text: #1e293b;
@@ -25,37 +26,60 @@
       color: var(--text); 
     }
 
+    /* ⚙️ Global Styles & Reset */
     * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
 
+    /* 💻 Layout & Animations */
     #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
 
-    header { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem; }
-    header h1 { font-size:2.7rem; margin-bottom:0.5rem; opacity:0; animation: slideRight 1s forwards; }
-    header img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; opacity:0; animation: slideLeft 1s forwards; }
+    header { text-align: center; padding: 5rem 1rem 3rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
+    
+    /* 🖼️ Profile Picture Style */
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%; /* Makes it circular */
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      border: 4px solid white; /* White border for emphasis */
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.3); /* Soft outer glow */
+      opacity: 0; /* Start hidden for fade-in */
+      transform: translateY(-20px);
+      animation: fadeInPicture 1s ease-out 0.3s forwards; /* Animation added */
+    }
 
-    @keyframes slideRight { from {opacity:0; transform: translateX(-50px);} to {opacity:1; transform: translateX(0);} }
-    @keyframes slideLeft { from {opacity:0; transform: translateX(50px);} to {opacity:1; transform: translateX(0);} }
-
-    .typing-container { 
+    header h1 { font-size:2.8rem; margin-bottom:0.5rem; animation: fadeIn 1s ease-in-out; }
+    
+    /* Typing text styles */
+    header .typing-container { 
       font-size:1.2rem; 
       opacity:0.9; 
       animation: fadeIn 2s ease-in-out; 
-      min-height: 2rem; 
+      min-height: 2rem;
       display: inline-block;
       white-space: nowrap;
-      margin-top: 1rem;
     }
-
-    #typed-text:after { content: '|'; display: inline; animation: blink 0.7s infinite; margin-left: 0.15rem; font-weight: 300; }
+    #typed-text:after {
+      content: '|';
+      display: inline;
+      animation: blink 0.7s infinite;
+      margin-left: 0.15rem;
+      font-weight: 300;
+    }
+    
+    /* Keyframe Animations */
     @keyframes blink { 50% { opacity: 0; } }
     @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeInPicture {
+      to { opacity: 1; transform: translateY(0); } /* Cool fade-in */
+    }
 
     nav { background: var(--card); text-align:center; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:50; }
     nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; padding: 0.5rem 0; }
     nav a:hover { color: var(--accent); text-decoration: underline; }
-
+    
     #theme-toggle { background: var(--accent); color:white; border:none; border-radius:8px; padding:0.4rem 0.8rem; cursor:pointer; font-weight:500; margin-left:1rem; transition:0.3s; }
     #theme-toggle:hover { opacity:0.8; }
     #theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -71,12 +95,15 @@
 
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
 
+    /* Card Hover Effect */
     .card { background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
     .project-card, .skill-card { cursor: pointer; }
-    .card:hover, .card:focus-within { transform: translateY(-5px) scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
+    .card:hover, .card:focus-within { transform: translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
+    /* Ensure text/icons/images retain color or become white on hover */
+    .card:hover h3, .card:hover p, .card:hover img { color: white; filter: brightness(0) invert(1) !important; }
+    .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: filter 0.3s ease; } 
 
-    .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: transform 0.3s ease; }
-    .project-card img { width:100%; height:auto; border-radius:10px; margin-bottom:0.8rem; }
+    .project-card img { width:100%; height:auto; max-height: 200px; object-fit: cover; border-radius:10px; margin-bottom:0.8rem; }
     .project-card:hover h3, .project-card:hover p { color: white; }
 
     .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; border:none; }
@@ -86,95 +113,79 @@
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    .skill { margin: 1rem 0; }
-    .skill-name { font-weight:500; margin-bottom:0.3rem; }
+    /* Skill Bar & Counter Styles (for visibility in hover state) */
     .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
     .skill-fill { height:100%; background: var(--accent); width:0%; border-radius:8px; transition: width 1.5s ease-in-out; }
     .skill-card:hover .skill-fill { background: white; }
-
     .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
-    .stat:hover h3, .stat:focus h3 { color:white; }
+    .stat:hover h3 { color:white; }
 
     #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
-    #topBtn:hover, #topBtn:focus { transform: translateY(-2px); background: #2563eb; }
+    #topBtn:hover { transform: translateY(-2px); background: #2563eb; }
 
+    /* Floating CV Button with Liquid Shimmer */
     .floating-cv {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
+      position: fixed; bottom: 90px; right: 20px;
       background: linear-gradient(45deg, var(--accent), #2563eb);
-      color: white;
-      font-weight: 600;
-      padding: 0.7rem 1.1rem;
-      border-radius: 30px;
-      text-decoration: none;
+      color: white; font-weight: 600; padding: 0.7rem 1.1rem;
+      border-radius: 30px; text-decoration: none;
       box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-      overflow: hidden;
-      transition: all 0.3s ease;
-      z-index: 99;
+      overflow: hidden; transition: all 0.3s ease; z-index: 99;
     }
     .floating-cv::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 40%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.4);
-      transform: skewX(-20deg);
-      transition: all 0.3s;
+      content: ''; position: absolute; top: 0; left: -100%; 
+      width: 40%; height: 100%; 
+      background: rgba(255, 255, 255, 0.4); 
+      transform: skewX(-20deg); transition: all 0.3s;
     }
-    .floating-cv:hover::before { left: 150%; transition: all 0.7s ease-in-out; }
-    .floating-cv:hover, .floating-cv:focus { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
-
+    .floating-cv:hover::before {
+      left: 150%; transition: all 0.7s ease-in-out;
+    }
+    .floating-cv:hover, .floating-cv:focus {
+      transform: translateY(-3px) scale(1.05); 
+      box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    }
+    /* Contact Form Styles */
     input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; background: var(--card); color: var(--text); }
     input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
     button[type="submit"] { cursor:pointer; }
     form { display:flex; flex-direction:column; gap:0.8rem; max-width:500px; margin:auto; }
 
+    /* --- Modal (Lightbox) Styles --- */
     .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
-      padding-top: 60px;
+      display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; 
+      overflow: auto; background-color: rgba(0, 0, 0, 0.9); padding-top: 60px;
     }
     .modal-content {
-      margin: auto;
-      display: block;
-      width: 80%;
-      max-width: 900px;
-      background: var(--card);
-      padding: 20px;
-      border-radius: 10px;
-      position: relative;
+      margin: auto; display: block; width: 80%; max-width: 900px; 
+      background: var(--card); padding: 20px; border-radius: 10px; position: relative;
     }
     #modalImage { width: 100%; height: auto; display: block; border-radius: 8px; transition: opacity 0.3s; }
     #modalCaption { margin-top: 10px; text-align: center; color: var(--text); font-size: 1.1rem; }
-    .close-btn { position: absolute; top: 15px; right: 35px; color: var(--text); font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; background: var(--card); border-radius: 50%; padding: 0 12px; line-height: 1; }
-    .close-btn:hover, .close-btn:focus { color: var(--accent); transform: scale(1.1); }
+    .close-btn {
+      position: absolute; top: 15px; right: 35px; color: var(--text); font-size: 40px; font-weight: bold; 
+      transition: 0.3s; cursor: pointer; background: var(--card); border-radius: 50%; 
+      padding: 0 12px; line-height: 1;
+    }
+    .close-btn:hover { color: var(--accent); transform: scale(1.1); }
 
     @media only screen and (max-width: 700px){
       .modal-content { width: 90%; }
-      header { flex-direction: column; }
-      header img { width: 180px; height: 180px; }
+      header h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
 <body>
+
   <div id="scrollBar"></div>
 
   <header>
-    <img src="yasir_portfolio.png" alt="Rao Muhammad Yasir Photo">
-    <div>
-      <h1>Rao Muhammad Yasir</h1>
-      <p class="typing-container"><span id="typed-text"></span></p>
-    </div>
+    <img src="yasir_portfolio.png" alt="Rao Muhammad Yasir Profile Picture" class="profile-pic">
+    
+    <h1>Rao Muhammad Yasir</h1>
+    <p class="typing-container">
+        <span id="typed-text"></span>
+    </p>
   </header>
 
   <nav>
@@ -188,126 +199,120 @@
   </nav>
 
   <main>
-    <!-- About Section -->
     <section id="about">
       <h2>💡 About Me</h2>
       <p class="section-text">
-        I am <strong>Rao Muhammad Yasir</strong>, a dedicated Microsoft Office Expert. I empower professionals and
-        businesses to achieve peak efficiency by creating <strong>visually compelling</strong> and <strong>functionally flawless</strong>
-        documents, spreadsheets, and presentations using my mastery of <strong>Word, Excel, and PowerPoint</strong>.
+        I am <strong>Rao Muhammad Yasir</strong>, a dedicated **Microsoft Office Expert**. I empower professionals and
+        businesses to achieve peak efficiency by creating **visually compelling** and **functionally flawless**
+        documents, spreadsheets, and presentations using my mastery of **Word, Excel, and PowerPoint**.
       </p>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
       <h2>🧠 Core Skills</h2>
       <div class="grid">
         <div class="card skill-card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word logo icon">
           <h3>MS Word</h3>
-          <p>Formatting, reports, templates, mail merges.</p>
+          <p>Advanced formatting, professional reports, custom templates, and efficient mail merges.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="95%"></div></div></div>
         </div>
         <div class="card skill-card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel logo icon">
           <h3>MS Excel</h3>
-          <p>Data entry, analysis, formulas, dashboards.</p>
+          <p>Data analysis, complex formulas (VLOOKUP, Pivot), interactive dashboards, and reporting.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div></div>
         </div>
         <div class="card skill-card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint logo icon">
           <h3>MS PowerPoint</h3>
-          <p>Presentation design, storytelling, visuals.</p>
+          <p>High-impact presentation design, visual storytelling, and custom animation mastery.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div></div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
       <h2>📁 Featured Projects</h2>
+
       <h3 class="subsection-title">MS Word Projects</h3>
       <div class="grid projects-grid">
-        <div class="card project-card" data-img-src="word1.png" data-caption="Professional company document template (Word)">
+        <div class="card project-card" tabindex="0" data-img-src="word1.png" data-caption="Professional company document template (Word)">
           <img src="word1.png" alt="Preview of Professional company document template">
-          <h3>Word Project 1</h3>
+          <h3>Template Design</h3>
           <p>Professional Transport Company Flyer Design</p>
         </div>
-        <div class="card project-card" data-img-src="word2.png" data-caption="Structured report layout for business use (Word)">
+        <div class="card project-card" tabindex="0" data-img-src="word2.png" data-caption="Structured report layout for business use (Word)">
           <img src="word2.png" alt="Preview of Structured report layout">
-          <h3>Word Project 2</h3>
+          <h3>Flyer Design</h3>
           <p>High-Quality Flyer Design Tailored for Transport Companies</p>
         </div>
-        <div class="card project-card" data-img-src="word3.png" data-caption="Modern template for professional proposals (Word)">
+        <div class="card project-card" tabindex="0" data-img-src="word3.png" data-caption="Modern template for professional proposals (Word)">
           <img src="word3.png" alt="Preview of Modern template for professional proposals">
-          <h3>Word Project 3</h3>
+          <h3>Proposal Layout</h3>
           <p>Eye-Catching Flyer Designs for Your Transport Business</p>
         </div>
       </div>
 
       <h3 class="subsection-title">MS Excel Projects</h3>
       <div class="grid projects-grid">
-        <div class="card project-card" data-img-src="excel1.png" data-caption="Interactive dashboard with auto-calculated sales insights (Excel)">
+        <div class="card project-card" tabindex="0" data-img-src="excel1.png" data-caption="Interactive dashboard with auto-calculated sales insights (Excel)">
           <img src="excel1.png" alt="Preview of Business Sales Dashboard">
           <h3>Business Sales Dashboard</h3>
-          <p>Interactive dashboard with auto-calculated sales insights.</p>
+          <p>Interactive dashboard with auto-calculated sales insights and dynamic charts.</p>
         </div>
-        <div class="card project-card" data-img-src="excel2.png" data-caption="Automated attendance sheet with total present/absent count (Excel)">
+        <div class="card project-card" tabindex="0" data-img-src="excel2.png" data-caption="Automated attendance sheet with total present/absent count (Excel)">
           <img src="excel2.png" alt="Preview of Employee Attendance Tracker">
-          <h3>Employee Attendance Tracker</h3>
-          <p>Automated attendance sheet with total present/absent count.</p>
+          <h3>Employee Tracker</h3>
+          <p>Automated attendance sheet with conditional formatting and total count functions.</p>
         </div>
       </div>
-      <p class="contact-prompt">Click any project card to view the image in detail.</p>
+      <p class="contact-prompt">Click or use Enter/Space on any project card to view the image in detail.</p>
     </section>
 
-    <!-- Certificates -->
     <section id="certificates">
-      <h2>🏅 Certificates</h2>
+      <h2>🏅 Certificates & Training</h2>
       <div class="grid">
         <div class="card cert-card">
-          <h3>Microsoft Office (STICS Rawalpindi)</h3>
-          <p>Trained and verified in Word, Excel, PowerPoint.</p>
+          <h3>Microsoft Office Specialist (STICS)</h3>
+          <p>Trained and verified in Word, Excel, and PowerPoint proficiency at STICS Rawalpindi.</p>
         </div>
         <div class="card cert-card">
-          <h3>Data Management</h3>
-          <p>Understanding structured data entry and reporting accuracy.</p>
+          <h3>Data Management & Reporting</h3>
+          <p>Completed training focused on structured data entry, analysis, and reporting accuracy.</p>
         </div>
       </div>
     </section>
 
-    <!-- Stats -->
     <section id="stats">
-      <h2>📊 Achievements</h2>
+      <h2>📊 Key Achievements</h2>
       <div class="grid">
-        <div class="card stat"><h3 data-target="50">0</h3><p>Word Templates</p></div>
-        <div class="card stat"><h3 data-target="30">0</h3><p>Excel Dashboards</p></div>
+        <div class="card stat"><h3 data-target="50">0</h3><p>Word Templates Created</p></div>
+        <div class="card stat"><h3 data-target="30">0</h3><p>Excel Dashboards Developed</p></div>
         <div class="card stat"><h3 data-target="20">0</h3><p>Presentations Delivered</p></div>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
-      <h2>📬 Contact Me</h2>
-      <p class="section-text" style="margin-bottom: 1rem;">*Your message will be sent securely via Formspree.*</p>
+      <h2>📬 Get in Touch</h2>
+      <p class="section-text" style="margin-bottom: 1rem;">Have a project? I'm ready to help you optimize your documents and data.</p>
       <form action="https://formspree.io/f/xeovjrgb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
+        <textarea name="message" placeholder="Your Message" required rows="5"></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
     </section>
   </main>
 
-  <a href="YASIR_CV.pdf" class="floating-cv" download>📄 CV</a>
+  <a href="YASIR_CV.pdf" class="floating-cv" download>📄 Download CV</a>
 
   <footer>
-    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com" target="_blank">GitHub Pages</a>
+    © 2025 Rao Muhammad Yasir — Built with 💙
   </footer>
 
   <button id="topBtn" aria-label="Scroll back to top">⬆</button>
 
-  <!-- Modal -->
   <div id="projectModal" class="modal" aria-modal="true" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <span class="close-btn" aria-label="Close image viewer">&times;</span>
@@ -318,73 +323,179 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Typing effect
-        const typedTextSpan = document.getElementById('typed-text');
-        const phrases = [
-            "Word | Excel | PowerPoint",
-            "I create flawless Documents.",
-            "I design dynamic Dashboards.",
-            "I craft compelling Presentations.",
-            "Your Microsoft Office Expert."
-        ];
-        const typingDelay = 60, deletingDelay = 30, pauseDelay = 1500;
-        let phraseIndex = 0, charIndex = 0, isDeleting = false;
-        function typeWriter() {
-            const currentPhrase = phrases[phraseIndex];
-            if(!isDeleting){
-                if(charIndex<currentPhrase.length){
-                    typedTextSpan.textContent += currentPhrase.charAt(charIndex++);
-                    setTimeout(typeWriter, typingDelay);
-                }else{isDeleting=true; setTimeout(typeWriter,pauseDelay);}
-            }else{
-                if(charIndex>0){ typedTextSpan.textContent=currentPhrase.substring(0,charIndex-1); charIndex--; setTimeout(typeWriter,deletingDelay);}
-                else{isDeleting=false; phraseIndex=(phraseIndex+1)%phrases.length; setTimeout(typeWriter,typingDelay);}
-            }
+
+      // --- 1. Typing Effect Logic (Faster Speed) ---
+      const typedTextSpan = document.getElementById('typed-text');
+      const phrases = [
+          "Word | Excel | PowerPoint",
+          "I create flawless Documents.",
+          "I design dynamic Dashboards.",
+          "I craft compelling Presentations.",
+          "Your Microsoft Office Expert."
+      ];
+      const typingDelay = 60;
+      const deletingDelay = 30;
+      const pauseDelay = 1500;
+
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function typeWriter() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (!isDeleting) {
+          if (charIndex < currentPhrase.length) {
+            typedTextSpan.textContent += currentPhrase.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriter, typingDelay);
+          } else {
+            isDeleting = true;
+            setTimeout(typeWriter, pauseDelay);
+          }
+        } else {
+          if (charIndex > 0) {
+            typedTextSpan.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(typeWriter, deletingDelay);
+          } else {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(typeWriter, typingDelay);
+          }
         }
-        typeWriter();
+      }
+      typeWriter();
 
-        // Theme toggle
-        const toggle = document.getElementById('theme-toggle');
-        if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
-        toggle.addEventListener('click',()=>{
-            if(document.body.dataset.theme==='dark'){document.body.dataset.theme=''; toggle.textContent='🌙'; localStorage.setItem('theme','');}
-            else{document.body.dataset.theme='dark'; toggle.textContent='☀️'; localStorage.setItem('theme','dark');}
+
+      // --- 2. Theme Toggle Logic ---
+      const toggle = document.getElementById('theme-toggle');
+      const storedTheme = localStorage.getItem('theme');
+
+      if (storedTheme === 'dark') {
+          document.body.dataset.theme = 'dark';
+          toggle.textContent = '☀️';
+      }
+
+      toggle.addEventListener('click', () => {
+          if (document.body.dataset.theme === 'dark') {
+              document.body.dataset.theme = '';
+              toggle.textContent = '🌙';
+              localStorage.setItem('theme', '');
+          } else {
+              document.body.dataset.theme = 'dark';
+              toggle.textContent = '☀️';
+              localStorage.setItem('theme', 'dark');
+          }
+      });
+
+      // --- 3. Section Visibility Observer & Animations ---
+      const sections = document.querySelectorAll('section');
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
+      }, { threshold: 0.1 });
+      sections.forEach(section => sectionObserver.observe(section));
 
-        // Section fade-in
-        const sections=document.querySelectorAll('section');
-        const sectionObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}})}, { threshold: 0.1 });
-        sections.forEach(section=>sectionObserver.observe(section));
+      // Scroll Progress Bar
+      const scrollBar = document.getElementById('scrollBar');
+      window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        scrollBar.style.width = (scrollTop / scrollHeight * 100) + "%";
+      });
 
-        // Scroll bar
-        const scrollBar=document.getElementById('scrollBar');
-        window.addEventListener('scroll',()=>{scrollBar.style.width=(document.documentElement.scrollTop/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%';});
+      // Back-to-Top Button
+      const topBtn = document.getElementById('topBtn');
+      window.addEventListener('scroll', () => {
+        topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+      topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Back to top
-        const topBtn=document.getElementById('topBtn');
-        window.addEventListener('scroll',()=>{topBtn.style.display=window.scrollY>300?'block':'none';});
-        topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+      // Skill Bar Animation
+      const skillFills = document.querySelectorAll('.skill-fill');
+      const skillObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.width = entry.target.dataset.fill;
+            skillObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      skillFills.forEach(fill => skillObserver.observe(fill));
 
-        // Skill bars
-        const skillFills=document.querySelectorAll('.skill-fill');
-        const skillObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target);}}},{threshold:0.5});
-        skillFills.forEach(fill=>skillObserver.observe(fill));
+      // Counter Animation
+      const counters = document.querySelectorAll('.stat h3');
+      const counterObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const updateCount = (el) => {
+              const target = parseInt(el.dataset.target);
+              let count = parseInt(el.innerText);
+              const increment = Math.ceil(target / 100);
+              if (count < target) {
+                el.innerText = count + increment;
+                setTimeout(() => updateCount(el), 20);
+              } else {
+                el.innerText = target;
+              }
+            }
+            updateCount(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(counter => counterObserver.observe(counter));
 
-        // Counter animation
-        const counters=document.querySelectorAll('.stat h3');
-        const counterObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const updateCount=el=>{const target=parseInt(el.dataset.target); let count=parseInt(el.innerText); const increment=Math.ceil(target/100); if(count<target){el.innerText=count+increment; setTimeout(()=>updateCount(el),20);}else{el.innerText=target;}}; updateCount(entry.target); counterObserver.unobserve(entry.target);}}},{threshold:0.5});
-        counters.forEach(counter=>counterObserver.observe(counter));
 
-        // Modal logic
-        const modal=document.getElementById('projectModal');
-        const modalImage=document.getElementById('modalImage');
-        const modalCaption=document.getElementById('modalCaption');
-        const closeBtn=document.querySelector('.close-btn');
-        const projectCards=document.querySelectorAll('.project-card');
-        projectCards.forEach(card=>{card.addEventListener('click',()=>{modalImage.src=card.dataset.imgSrc; modalCaption.textContent=card.dataset.caption; modal.style.display='block'; modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';});});
-        closeBtn.addEventListener('click',()=>{modal.style.display='none'; modal.setAttribute('aria-hidden','true'); document.body.style.overflow='';});
-        window.addEventListener('click',e=>{if(e.target===modal){modal.style.display='none'; modal.setAttribute('aria-hidden','true'); document.body.style.overflow='';}});
-        document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.style.display==='block'){modal.style.display='none'; modal.setAttribute('aria-hidden','true'); document.body.style.overflow='';}});
+      // Project Modal (Lightbox) Logic
+      const modal = document.getElementById('projectModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      const closeBtn = document.querySelector('.close-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const imgSrc = card.dataset.imgSrc;
+          const caption = card.dataset.caption;
+
+          modalImage.src = imgSrc;
+          modalCaption.textContent = caption;
+          modal.style.display = 'block';
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+      });
+
+      function closeModal() {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+
+      window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+          closeModal();
+        }
+      });
     });
   </script>
 </body>
