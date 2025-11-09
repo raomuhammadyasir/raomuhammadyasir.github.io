@@ -6,94 +6,85 @@
   <title>Rao Muhammad Yasir | MS Office Expert</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Word, Excel, PowerPoint professional portfolio.">
-  <meta name="keywords" content="MS Office, Microsoft Word, Excel, PowerPoint, Portfolio, Resume, Professional">
-  <meta property="og:title" content="Rao Muhammad Yasir - MS Office Expert">
-  <meta property="og:description" content="Professional portfolio showcasing Word, Excel, PowerPoint projects and certificates.">
-  <meta property="og:image" content="assets/images/portfolio-preview.png">
-  <meta property="og:url" content="https://raomuhammadyasir.github.io">
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-
   <style>
     :root {
-      --bg:#f4f6f9; --text:#1e293b; --card:#fff; --accent:#3b82f6; --scroll-bg:#d1d5db; --cursor-size:20px;
+      --bg: #f4f6f9;
+      --text: #1e293b;
+      --card: #fff;
+      --accent: #3b82f6;
+      --scroll-bg: #d1d5db;
+      --cursor-size: 20px;
     }
     [data-theme="dark"] {
-      --bg:#0f172a; --text:#e2e8f0; --card:#1e293b; --accent:#60a5fa; --scroll-bg:#1e293b;
+      --bg: #0f172a;
+      --text: #e2e8f0;
+      --card: #1e293b;
+      --accent: #60a5fa;
+      --scroll-bg: #1e293b;
     }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;cursor:none;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--text);line-height:1.6;transition:0.4s ease;}
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; cursor:none; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
 
     /* Custom cursor */
-    #cursor{position:fixed;top:0;left:0;width:var(--cursor-size);height:var(--cursor-size);background:var(--accent);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:0.1s ease;z-index:1000;mix-blend-mode:difference;}
+    #cursor { position: fixed; top: 0; left: 0; width: var(--cursor-size); height: var(--cursor-size); background: var(--accent); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); transition: 0.1s ease; z-index:1000; mix-blend-mode: difference; }
 
-    /* Scroll progress */
-    #scrollBar{position:fixed;top:0;left:0;height:4px;background:var(--accent);width:0%;z-index:100;transition:width 0.2s ease;}
+    /* Scroll progress bar */
+    #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
 
-    /* Header */
-    header{text-align:center;padding:5rem 1rem;background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:white;}
-    header h1{font-size:2.7rem;margin-bottom:0.5rem;animation:fadeIn 1s ease-in-out;}
-    header p{font-size:1.2rem;opacity:0.9;animation:fadeIn 2s ease-in-out;}
+    header { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
+    header h1 { font-size:2.7rem; margin-bottom:0.5rem; animation: fadeIn 1s ease-in-out; }
+    header p { font-size:1.2rem; opacity:0.9; animation: fadeIn 2s ease-in-out; }
 
-    /* Navigation */
-    nav{background:var(--card);text-align:center;padding:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:sticky;top:0;z-index:50;}
-    nav a{color:var(--text);text-decoration:none;margin:0 1rem;font-weight:500;transition:0.3s;}
-    nav a:hover{color:var(--accent);text-decoration:underline;}
-    #theme-toggle{background:var(--accent);color:white;border:none;border-radius:8px;padding:0.4rem 0.8rem;cursor:pointer;font-weight:500;margin-left:1rem;transition:0.3s;}
-    #theme-toggle:hover{opacity:0.8;}
+    nav { background: var(--card); text-align:center; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:50; }
+    nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; }
+    nav a:hover { color: var(--accent); text-decoration: underline; }
+    #theme-toggle { background: var(--accent); color:white; border:none; border-radius:8px; padding:0.4rem 0.8rem; cursor:pointer; font-weight:500; margin-left:1rem; transition:0.3s; }
+    #theme-toggle:hover { opacity:0.8; }
 
-    main{max-width:1100px;margin:auto;}
-    section{padding:3rem 1.5rem;opacity:0;transform:translateY(20px);transition:all 0.6s ease;}
-    section.visible{opacity:1;transform:translateY(0);}
-    h2{text-align:center;font-size:1.9rem;margin-bottom:1.8rem;color:var(--accent);}
+    main { max-width: 1100px; margin:auto; }
+    section { padding: 3rem 1.5rem; opacity:0; transform: translateY(20px); transition: all 0.6s ease; }
+    section.visible { opacity:1; transform: translateY(0); }
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+    h2 { text-align:center; font-size:1.9rem; margin-bottom:1.8rem; color: var(--accent); }
 
-    .card{background:var(--card);border-radius:15px;box-shadow:0 6px 20px rgba(0,0,0,0.08);padding:2rem;text-align:center;transition:transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;}
-    .card:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 8px 25px rgba(0,0,0,0.15);background:var(--accent);color:white;}
-    .card img{width:65px;margin-bottom:1rem;transition:transform 0.3s ease;}
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
 
-    /* Project hover overlay */
-    .project-card{position:relative;overflow:hidden;}
-    .project-card .overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.65);color:white;display:flex;justify-content:center;align-items:center;opacity:0;transition:0.3s;border-radius:10px;text-align:center;padding:1rem;}
-    .project-card:hover .overlay{opacity:1;}
+    .card { background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
+    .card:hover { transform: translateY(-5px) scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
 
-    .projects img{width:100%;border-radius:10px;margin-bottom:0.8rem;transition:transform 0.3s ease;}
-    .projects img:hover{transform:scale(1.05);}
-    .btn{display:inline-block;background:var(--accent);color:white;padding:0.8rem 1.4rem;border-radius:8px;margin-top:1rem;text-decoration:none;transition:0.3s;}
-    .btn:hover{background:#2563eb;transform:translateY(-2px);}
+    .card img { width:65px; margin-bottom:1rem; transition: transform 0.3s ease; }
+    .projects img { width:100%; border-radius:10px; margin-bottom:0.8rem; transition: transform 0.3s ease; }
+    .projects img:hover { transform: scale(1.05); }
 
-    footer{background:var(--card);color:var(--text);text-align:center;padding:2rem;font-size:0.9rem;border-top:1px solid rgba(0,0,0,0.1);}
-    footer a{color:var(--accent);text-decoration:none;}
-    footer a:hover{text-decoration:underline;}
+    .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; }
+    .btn:hover { background:#2563eb; transform: translateY(-2px); }
 
-    .skill{margin:1rem 0;}
-    .skill-name{font-weight:500;margin-bottom:0.3rem;}
-    .skill-bar{background:var(--scroll-bg);border-radius:8px;overflow:hidden;height:15px;}
-    .skill-fill{height:100%;background:var(--accent);width:0%;border-radius:8px;transition:width 1.5s ease-in-out;}
+    footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
 
-    /* Testimonials slider */
-    .testimonial-container{position:relative;overflow:hidden;}
-    .testimonial-track{display:flex;transition:transform 0.5s ease-in-out;}
-    .testimonial-card{flex:0 0 100%;padding:1rem;}
-    .testimonial-card p{font-style:italic;}
-    .testimonial-nav{text-align:center;margin-top:1rem;}
-    .testimonial-nav button{background:var(--accent);color:white;border:none;border-radius:50%;width:25px;height:25px;margin:0 5px;cursor:pointer;}
-    .testimonial-nav button.active{box-shadow:0 0 5px var(--accent);}
+    .skill { margin: 1rem 0; }
+    .skill-name { font-weight:500; margin-bottom:0.3rem; }
+    .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
+    .skill-fill { height:100%; background: var(--accent); width:0%; border-radius:8px; transition: width 1.5s ease-in-out; }
 
-    /* Stats */
-    .stat h3{font-size:2rem;color:var(--accent);margin-bottom:0.5rem;}
+    .testimonial-container { position: relative; overflow:hidden; }
+    .testimonial-track { display:flex; transition: transform 0.5s ease-in-out; }
+    .testimonial-card { flex:0 0 100%; padding:1rem; }
+    .testimonial-card p { font-style:italic; }
+    .testimonial-nav { text-align:center; margin-top:1rem; }
+    .testimonial-nav button { background: var(--accent); color:white; border:none; border-radius:50%; width:25px; height:25px; margin:0 5px; cursor:pointer; }
 
-    /* Back to top */
-    #topBtn{position:fixed;bottom:20px;right:20px;display:none;background:var(--accent);color:white;border:none;border-radius:50%;width:45px;height:45px;cursor:pointer;font-size:1.2rem;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:0.3s;}
-    #topBtn:hover{transform:translateY(-2px);}
+    .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
 
-    input, textarea{border-radius:6px;border:1px solid #ccc;padding:0.6rem;width:100%;transition:all 0.3s ease;}
-    input:focus, textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 5px var(--accent);}
-    button[type="submit"]{cursor:pointer;}
-    form{display:flex;flex-direction:column;gap:0.8rem;max-width:500px;margin:auto;}
+    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; }
+    #topBtn:hover { transform: translateY(-2px); }
 
-    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+    input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; }
+    input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
+    button[type="submit"] { cursor:pointer; }
+    form { display:flex; flex-direction:column; gap:0.8rem; max-width:500px; margin:auto; }
+
+    @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
   </style>
 </head>
 <body>
@@ -101,14 +92,12 @@
   <div id="cursor"></div>
   <div id="scrollBar"></div>
 
-  <!-- Header -->
   <header>
     <h1>Rao Muhammad Yasir</h1>
     <p>Microsoft Office Expert • Word | Excel | PowerPoint</p>
   </header>
 
-  <!-- Navigation -->
-  <nav aria-label="Main navigation">
+  <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
@@ -157,22 +146,22 @@
     <section id="projects">
       <h2>📁 Featured Projects</h2>
       <div class="grid projects">
-        <div class="card project-card">
+        <div class="card">
           <img src="assets/images/excel-project.png" alt="Excel Inventory System">
-          <div class="overlay">Automated record keeping using formulas and data validation.</div>
           <h3>Excel Inventory System</h3>
+          <p>Automated record keeping using formulas and data validation.</p>
           <a href="https://github.com/yourusername/excel-project" target="_blank" class="btn">View on GitHub</a>
         </div>
-        <div class="card project-card">
+        <div class="card">
           <img src="assets/images/word-template.png" alt="Resume Template">
-          <div class="overlay">Elegant Word templates for professional resumes.</div>
           <h3>Resume Template Design</h3>
+          <p>Elegant Word templates for professional resumes.</p>
           <a href="https://github.com/yourusername/word-template" target="_blank" class="btn">View on GitHub</a>
         </div>
-        <div class="card project-card">
+        <div class="card">
           <img src="assets/images/ppt-project.png" alt="PowerPoint NGO Presentation">
-          <div class="overlay">Awareness campaign deck using visuals and animations.</div>
           <h3>Presentation for NGO</h3>
+          <p>Awareness campaign deck using visuals and animations.</p>
           <a href="https://github.com/yourusername/ppt-project" target="_blank" class="btn">View on GitHub</a>
         </div>
       </div>
@@ -204,7 +193,7 @@
         </div>
       </div>
       <div class="testimonial-nav">
-        <button data-slide="0" class="active"></button>
+        <button data-slide="0"></button>
         <button data-slide="1"></button>
         <button data-slide="2"></button>
       </div>
@@ -220,23 +209,17 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact / Newsletter -->
     <section id="contact">
       <h2>📬 Contact & Newsletter</h2>
       <form action="https://formspree.io/f/yourformid" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" required></textarea>
-        <input type="text" name="_gotcha" style="display:none">
         <button type="submit" class="btn">Send Message / Subscribe</button>
       </form>
       <br>
       <a href="assets/CV.pdf" class="btn" download>⬇ Download My CV</a>
-      <div style="text-align:center;margin-top:1rem;">
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn">LinkedIn</a>
-        <a href="https://github.com/yourusername" target="_blank" class="btn">GitHub</a>
-        <a href="mailto:youremail@example.com" class="btn">Email</a>
-      </div>
     </section>
   </main>
 
@@ -247,11 +230,11 @@
   <button id="topBtn">⬆</button>
 
   <script>
-    /* Custom cursor */
+    // Custom cursor
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
 
-    /* Theme toggle */
+    // Theme toggle with memory
     const toggle = document.getElementById('theme-toggle');
     if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
     toggle.addEventListener('click',()=>{ 
@@ -259,47 +242,53 @@
       else { document.body.dataset.theme='dark'; toggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
     });
 
-    /* Section fade-in */
+    // Section fade-in
     const sections=document.querySelectorAll('section');
     const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });},{threshold:0.1});
     sections.forEach(section=>observer.observe(section));
 
-    /* Scroll progress */
+    // Scroll progress bar
     const scrollBar=document.getElementById('scrollBar');
     window.addEventListener('scroll',()=>{ const scrollTop=document.documentElement.scrollTop; const scrollHeight=document.documentElement.scrollHeight-window.innerHeight; scrollBar.style.width=(scrollTop/scrollHeight*100)+"%"; });
 
-    /* Back to top */
+    // Back to top button
     const topBtn=document.getElementById('topBtn');
     window.addEventListener('scroll',()=>{ topBtn.style.display=window.scrollY>300?'block':'none'; });
     topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-    /* Animate skill bars */
+    // Animate skill bars
     const skillFills=document.querySelectorAll('.skill-fill');
-    const skillObserver=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); } });},{threshold:0.5});
+    const skillObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); }
+      });
+    },{threshold:0.5});
     skillFills.forEach(fill=>skillObserver.observe(fill));
 
-    /* Animate counters */
+    // Animate counters
     const counters=document.querySelectorAll('.stat h3');
-    const counterObserver=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ const updateCount=(el)=>{ const target=parseInt(el.dataset.target); let count=parseInt(el.innerText); const increment=Math.ceil(target/100); if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target; } updateCount(entry.target); counterObserver.unobserve(entry.target); } });},{threshold:0.5});
+    const counterObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const updateCount=(el)=>{
+            const target=parseInt(el.dataset.target);
+            let count=parseInt(el.innerText);
+            const increment=Math.ceil(target/100);
+            if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target;
+          }
+          updateCount(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.5});
     counters.forEach(counter=>counterObserver.observe(counter));
 
-    /* Testimonials slider */
+    // Testimonials slider
     const track=document.querySelector('.testimonial-track');
     const slides=document.querySelectorAll('.testimonial-card');
     const buttons=document.querySelectorAll('.testimonial-nav button');
     let current=0;
-    const updateSlide=(i)=>{ track.style.transform=`translateX(-${i*100}%)`; buttons.forEach(b=>b.classList.remove('active')); buttons[i].classList.add('active'); current=i; }
-    buttons.forEach(btn=>{ btn.addEventListener('click',()=>{ updateSlide(parseInt(btn.dataset.slide)); }); });
-    /* Auto slide every 5s */
-    setInterval(()=>{ updateSlide((current+1)%slides.length); },5000);
-
-    /* Smooth scroll for nav */
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
-      });
-    });
+    buttons.forEach(btn=>{ btn.addEventListener('click',()=>{ current=parseInt(btn.dataset.slide); track.style.transform=`translateX(-${current*100}%)`; }); });
   </script>
 
 </body>
