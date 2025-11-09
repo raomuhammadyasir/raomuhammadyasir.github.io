@@ -138,23 +138,23 @@
     <section id="projects">
       <h2>📁 Featured Projects</h2>
       <div class="grid projects">
+        <!-- Word Project 1 -->
         <div class="card">
-          <img src="assets/images/excel-project.png" alt="Excel Inventory System">
-          <h3>Excel Inventory System</h3>
-          <p>Automated record keeping using formulas and data validation.</p>
-          <a href="https://github.com/yourusername/excel-project" target="_blank" class="btn">View on GitHub</a>
+          <img src="assets/images/word1.png" alt="Word Project 1">
+          <h3>Word Project 1</h3>
+          <p>Professional resume template designed in Word.</p>
         </div>
+        <!-- Word Project 2 -->
         <div class="card">
-          <img src="assets/images/word-template.png" alt="Resume Template">
-          <h3>Resume Template Design</h3>
-          <p>Elegant Word templates for professional resumes.</p>
-          <a href="https://github.com/yourusername/word-template" target="_blank" class="btn">View on GitHub</a>
+          <img src="assets/images/word2.png" alt="Word Project 2">
+          <h3>Word Project 2</h3>
+          <p>Formal report template designed in Word.</p>
         </div>
+        <!-- Word Project 3 -->
         <div class="card">
-          <img src="assets/images/ppt-project.png" alt="PowerPoint NGO Presentation">
-          <h3>Presentation for NGO</h3>
-          <p>Awareness campaign deck using visuals and animations.</p>
-          <a href="https://github.com/yourusername/ppt-project" target="_blank" class="btn">View on GitHub</a>
+          <img src="assets/images/word3.png" alt="Word Project 3">
+          <h3>Word Project 3</h3>
+          <p>Invoice template designed in Word with clean layout.</p>
         </div>
       </div>
     </section>
@@ -186,15 +186,15 @@
 
     <!-- Contact / CV -->
     <section id="contact">
-      <h2>📬 Contact & CV</h2>
+      <h2>📬 Contact & Newsletter</h2>
       <form action="https://formspree.io/f/xeovjrgb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
+        <button type="submit" class="btn">Send Message / Subscribe</button>
       </form>
       <br>
-      <a href="YASIR_CV.pdf" class="btn" download target="_blank">⬇ Download My CV</a>
+      <a href="assets/CV.pdf" class="btn" download>⬇ Download My CV</a>
     </section>
   </main>
 
@@ -205,11 +205,11 @@
   <button id="topBtn">⬆</button>
 
   <script>
-    // Cursor
+    // Custom cursor
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
 
-    // Theme toggle
+    // Theme toggle with memory
     const toggle = document.getElementById('theme-toggle');
     if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
     toggle.addEventListener('click',()=>{ 
@@ -226,7 +226,7 @@
     const scrollBar=document.getElementById('scrollBar');
     window.addEventListener('scroll',()=>{ const scrollTop=document.documentElement.scrollTop; const scrollHeight=document.documentElement.scrollHeight-window.innerHeight; scrollBar.style.width=(scrollTop/scrollHeight*100)+"%"; });
 
-    // Back to top
+    // Back to top button
     const topBtn=document.getElementById('topBtn');
     window.addEventListener('scroll',()=>{ topBtn.style.display=window.scrollY>300?'block':'none'; });
     topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
@@ -261,4 +261,3 @@
 
 </body>
 </html>
-
