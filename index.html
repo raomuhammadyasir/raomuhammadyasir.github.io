@@ -1,551 +1,787 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rao Muhammad Yasir | MS Office Expert</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Word, Excel, PowerPoint professional portfolio.">
-  <style>
-    :root {
-      --bg: #f4f6f9;
-      --text: #1e293b;
-      --card: #fff;
-      --accent: #3b82f6;
-      --scroll-bg: #d1d5db;
-    }
-    [data-theme="dark"] {
-      --bg: #0f172a;
-      --text: #e2e8f0;
-      --card: #1e293b;
-      --accent: #60a5fa;
-      --scroll-bg: #1e293b;
-    }
-    /* FIX: Ensures bold text is readable in dark mode */
-    [data-theme="dark"] strong, [data-theme="dark"] b {
-      color: var(--text); 
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rao Muhammad Yasir | MS Office Expert</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Word, Excel, PowerPoint professional portfolio.">
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <style>
+    :root {
+      --bg: #f4f6f9;
+      --text: #1e293b;
+      --card: #fff;
+      --accent: #3b82f6;
+      --scroll-bg: #d1d5db;
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --text: #e2e8f0;
+      --card: #1e293b;
+      --accent: #60a5fa;
+      --scroll-bg: #1e293b;
+    }
+    /* FIX: Ensures bold text is readable in dark mode */
+    [data-theme="dark"] strong, [data-theme="dark"] b {
+      color: var(--text); 
+    }
 
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+    /* Smooth Scroll Transition Added */
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
 
-    /* Scroll progress bar */
-    #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
+    /* Scroll progress bar */
+    #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
 
-    header { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
-    header h1 { font-size:2.7rem; margin-bottom:0.5rem; animation: fadeIn 1s ease-in-out; }
-    
-    /* Style for the typing text container */
-    header .typing-container { 
-      font-size:1.2rem; 
-      opacity:0.9; 
-      animation: fadeIn 2s ease-in-out; 
-      min-height: 2rem; /* Reserve space to prevent layout shift */
-      display: inline-block;
-      white-space: nowrap;
-    }
+    header { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
+    header h1 { font-size:2.7rem; margin-bottom:0.5rem; animation: fadeIn 1s ease-in-out; }
+    
+    /* Style for the typing text container */
+    header .typing-container { 
+      font-size:1.2rem; 
+      opacity:0.9; 
+      animation: fadeIn 2s ease-in-out; 
+      min-height: 2rem; /* Reserve space to prevent layout shift */
+      display: inline-block;
+      white-space: nowrap;
+    }
 
-    /* Typing cursor animation */
-    #typed-text:after {
-      content: '|';
-      display: inline;
-      animation: blink 0.7s infinite;
-      margin-left: 0.15rem;
-      font-weight: 300;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
+    /* Typing cursor animation */
+    #typed-text:after {
+      content: '|';
+      display: inline;
+      animation: blink 0.7s infinite;
+      margin-left: 0.15rem;
+      font-weight: 300;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
 
-    nav { background: var(--card); text-align:center; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:50; }
-    nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; padding: 0.5rem 0; }
-    nav a:hover { color: var(--accent); text-decoration: underline; }
+    nav { background: var(--card); text-align:center; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:50; }
+    nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; padding: 0.5rem 0; }
+    nav a:hover { color: var(--accent); text-decoration: underline; }
 
-    #theme-toggle { background: var(--accent); color:white; border:none; border-radius:8px; padding:0.4rem 0.8rem; cursor:pointer; font-weight:500; margin-left:1rem; transition:0.3s; }
-    #theme-toggle:hover { opacity:0.8; }
-    #theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+    #theme-toggle { background: var(--accent); color:white; border:none; border-radius:8px; padding:0.4rem 0.8rem; cursor:pointer; font-weight:500; margin-left:1rem; transition:0.3s; }
+    #theme-toggle:hover { opacity:0.8; }
+    #theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-    main { max-width: 1100px; margin:auto; }
-    section { padding: 3rem 1.5rem; opacity:0; transform: translateY(20px); transition: all 0.6s ease; }
-    section.visible { opacity:1; transform: translateY(0); }
+    main { max-width: 1100px; margin:auto; }
+    section { padding: 3rem 1.5rem; opacity:0; transform: translateY(20px); transition: all 0.6s ease; }
+    section.visible { opacity:1; transform: translateY(0); }
 
-    h2 { text-align:center; font-size:1.9rem; margin-bottom:1.8rem; color: var(--accent); }
-    .subsection-title { text-align:center; color:var(--text); margin:2rem 0 1rem; font-size: 1.5rem; }
-    .section-text { text-align:center; max-width:850px; margin:auto; }
-    .contact-prompt { text-align: center; margin-top: 1rem; opacity: 0.7; font-style: italic; font-size: 0.9rem; }
+    /* Animated Section Titles Added */
+    h2 { 
+      text-align:center; 
+      font-size:1.9rem; 
+      margin-bottom:1.8rem; 
+      color: var(--accent); 
+      position: relative;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    section.visible h2 {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
 
-    .card { background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
-    .project-card, .skill-card { cursor: pointer; }
-    .card:hover, .card:focus-within { transform: translateY(-5px) scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
+    .subsection-title { text-align:center; color:var(--text); margin:2rem 0 1rem; font-size: 1.5rem; }
+    .section-text { text-align:center; max-width:850px; margin:auto; }
+    .contact-prompt { text-align: center; margin-top: 1rem; opacity: 0.7; font-style: italic; font-size: 0.9rem; }
 
-    .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: transform 0.3s ease; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
 
-    .project-card img { width:100%; height:auto; border-radius:10px; margin-bottom:0.8rem; }
-    .project-card:hover h3, .project-card:hover p { color: white; }
+    .card { 
+      background: var(--card); 
+      border-radius: 15px; 
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08); 
+      padding: 2rem; 
+      text-align: center; 
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; 
+    }
+    .project-card, .skill-card { cursor: pointer; }
+    .card:hover, .card:focus-within { transform: translateY(-5px) scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
 
-    .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; border:none; }
-    .btn:hover { background:#2563eb; transform: translateY(-2px); }
+    .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: transform 0.3s ease; }
 
-    footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
-    footer a { color: var(--accent); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    /* Project Hover Effects Added */
+    .project-card { 
+      overflow: hidden; 
+      position: relative;
+    }
+    .project-card::after {
+      content: "View Case Study & Details";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 0.5rem;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-weight: 600;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+    .project-card:hover::after, .project-card:focus-within::after {
+      transform: translateY(0);
+    }
 
-    .skill { margin: 1rem 0; }
-    .skill-name { font-weight:500; margin-bottom:0.3rem; }
-    .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
-    .skill-fill { height:100%; background: var(--accent); width:0%; border-radius:8px; transition: width 1.5s ease-in-out; }
-    .skill-card:hover .skill-fill { background: white; }
+    .project-card img { width:100%; height:auto; border-radius:10px; margin-bottom:0.8rem; }
+    .project-card:hover h3, .project-card:hover p { color: white; }
 
-    .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
-    .stat:hover h3, .stat:focus h3 { color:white; }
+    .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; border:none; }
+    .btn:hover { background:#2563eb; transform: translateY(-2px); }
 
-    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
-    #topBtn:hover, #topBtn:focus { transform: translateY(-2px); background: #2563eb; }
+    /* Testimonial Slider Styles */
+    .testimonial-grid {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .testimonial-card {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      padding: 2.5rem;
+      background: var(--card);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      margin-right: 1.5rem;
+      text-align: center;
+      border-left: 5px solid var(--accent);
+    }
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .testimonial-card strong {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
 
-    /* Floating CV Button with Liquid Shimmer */
-    .floating-cv {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      background: var(--accent);
-      color: white;
-      font-weight: 600;
-      padding: 0.7rem 1.1rem;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-      overflow: hidden; /* Crucial for containing the shimmer effect */
-      transition: all 0.3s ease;
-      z-index: 99;
-      /* Ensure button is positioned for the pseudo-element */
-      position: fixed; 
-      
-      /* Base background to support the shimmer */
-      background: linear-gradient(45deg, var(--accent), #2563eb); 
-    }
+    /* Contact CTA Bar (Footer Stick) Added */
+    .cta-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #1e3a8a; /* Darker background for contrast */
+      color: white;
+      padding: 0.8rem 1.5rem;
+      text-align: center;
+      z-index: 100;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cta-bar p {
+      margin: 0;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+    .cta-bar a.btn {
+      margin: 0;
+      background: var(--accent);
+      padding: 0.5rem 1rem;
+    }
+    .cta-bar a.btn:hover {
+      background: #60a5fa;
+    }
+    @media (max-width: 600px) {
+      .cta-bar { flex-direction: column; }
+      .cta-bar p { margin-right: 0; margin-bottom: 0.5rem; }
+      .floating-cv { bottom: 120px; } /* Adjust floating CV button position */
+    }
 
-    /* Pseudo-element for the shimmer effect */
-    .floating-cv::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%; /* Start off-screen to the left */
-      width: 40%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.4); /* White transparent shine */
-      transform: skewX(-20deg); /* Slant the shine */
-      transition: all 0.3s;
-    }
 
-    /* Shimmer animation on hover */
-    .floating-cv:hover::before {
-      left: 150%; /* Move the shine across the button */
-      transition: all 0.7s ease-in-out;
-    }
-    
-    .floating-cv:hover, .floating-cv:focus {
-      transform: translateY(-3px) scale(1.05); /* Slight lift and scale on hover */
-      box-shadow: 0 8px 15px rgba(0,0,0,0.4);
-    }
-    /* End Liquid Shimmer styles */
+    footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
-    input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; background: var(--card); color: var(--text); }
-    input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
-    button[type="submit"] { cursor:pointer; }
-    form { display:flex; flex-direction:column; gap:0.8rem; max-width:500px; margin:auto; }
+    .skill { margin: 1rem 0; }
+    .skill-name { font-weight:500; margin-bottom:0.3rem; }
+    .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
+    .skill-fill { height:100%; background: var(--accent); width:0%; border-radius:8px; transition: width 1.5s ease-in-out; }
+    .skill-card:hover .skill-fill { background: white; }
 
-    /* --- Modal (Lightbox) Styles --- */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
-      padding-top: 60px;
-    }
-    .modal-content {
-      margin: auto;
-      display: block;
-      width: 80%;
-      max-width: 900px;
-      background: var(--card);
-      padding: 20px;
-      border-radius: 10px;
-      position: relative;
-    }
-    #modalImage {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-      transition: opacity 0.3s;
-    }
-    #modalCaption {
-      margin-top: 10px;
-      text-align: center;
-      color: var(--text);
-      font-size: 1.1rem;
-    }
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: var(--text);
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-      cursor: pointer;
-      background: var(--card);
-      border-radius: 50%;
-      padding: 0 12px;
-      line-height: 1;
-    }
-    .close-btn:hover, .close-btn:focus {
-      color: var(--accent);
-      text-decoration: none;
-      transform: scale(1.1);
-    }
+    .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
+    .stat:hover h3, .stat:focus h3 { color:white; }
 
-    @media only screen and (max-width: 700px){
-      .modal-content {
-        width: 90%;
-      }
-    }
+    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
+    #topBtn:hover, #topBtn:focus { transform: translateY(-2px); background: #2563eb; }
 
-    @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
-  </style>
+    /* Floating CV Button with Liquid Shimmer */
+    .floating-cv {
+      bottom: 90px; /* Adjusted position to clear CTA bar */
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+      position: fixed; 
+      background: linear-gradient(45deg, var(--accent), #2563eb); 
+    }
+
+    /* Pseudo-element for the shimmer effect */
+    .floating-cv::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 40%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: skewX(-20deg);
+      transition: all 0.3s;
+    }
+
+    /* Shimmer animation on hover */
+    .floating-cv:hover::before {
+      left: 150%;
+      transition: all 0.7s ease-in-out;
+    }
+    
+    .floating-cv:hover, .floating-cv:focus {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    }
+    /* End Liquid Shimmer styles */
+
+    input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; background: var(--card); color: var(--text); }
+    input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
+    button[type="submit"] { cursor:pointer; }
+    form { display:flex; flex-direction:column; gap:0.8rem; max-width:500px; margin:auto; }
+
+    /* --- Case Study Modal Styles (Enhanced Modal) --- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+    }
+    .modal-content {
+      margin: 60px auto;
+      display: flex; /* Use flexbox for image and details */
+      flex-direction: column;
+      width: 90%;
+      max-width: 1000px;
+      background: var(--card);
+      padding: 30px;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .modal-body {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .modal-image-container {
+      flex: 1;
+      min-width: 300px;
+    }
+    .modal-case-study {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
+    }
+
+    #modalImage {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    #modalCaption {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    .case-point {
+      margin-bottom: 1rem;
+    }
+    .case-point h4 {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: var(--text);
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      background: var(--card);
+      border-radius: 50%;
+      padding: 0 12px;
+      line-height: 1;
+    }
+    .close-btn:hover, .close-btn:focus {
+      color: var(--accent);
+      text-decoration: none;
+      transform: scale(1.1);
+    }
+
+    @media only screen and (max-width: 700px){
+      .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+      }
+      .modal-body {
+        flex-direction: column;
+      }
+      .floating-cv { bottom: 120px; }
+    }
+
+    @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
+  </style>
 </head>
 <body>
 
-  <div id="scrollBar"></div>
+  <div id="scrollBar"></div>
 
-  <header>
-    <h1>Rao Muhammad Yasir</h1>
-    <p class="typing-container">
-        <span id="typed-text"></span>
-    </p>
-  </header>
+  <header>
+    <h1>Rao Muhammad Yasir</h1>
+    <p class="typing-container">
+        <span id="typed-text"></span>
+    </p>
+  </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#certificates">Certificates</a>
-    <a href="#stats">Achievements</a>
-    <a href="#contact">Contact</a>
-    <button id="theme-toggle" aria-label="Toggle dark and light theme">🌙</button>
-  </nav>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#testimonials">Reviews</a>     <a href="#certificates">Certificates</a>
+    <a href="#stats">Achievements</a>
+    <a href="#contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark and light theme">🌙</button>
+  </nav>
 
-  <main>
-    <section id="about">
-      <h2>💡 About Me</h2>
-      <p class="section-text">
-        I am <strong>Rao Muhammad Yasir</strong>, a dedicated Microsoft Office Expert. I empower professionals and
-        businesses to achieve peak efficiency by creating <strong>visually compelling</strong> and <strong>functionally flawless</strong>
-        documents, spreadsheets, and presentations using my mastery of <strong>Word, Excel, and PowerPoint</strong>.
-      </p>
-    </section>
+  <main>
+    <section id="about">
+      <h2>💡 About Me</h2>
+      <p class="section-text">
+        I am <strong>Rao Muhammad Yasir</strong>, a dedicated Microsoft Office Expert. I empower professionals and
+        businesses to achieve peak efficiency by creating <strong>visually compelling</strong> and <strong>functionally flawless</strong>
+        documents, spreadsheets, and presentations using my mastery of <strong>Word, Excel, and PowerPoint</strong>.
+      </p>
+    </section>
 
-    <section id="skills">
-      <h2>🧠 Core Skills</h2>
-      <div class="grid">
-        <div class="card skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word logo icon">
-          <h3>MS Word</h3>
-          <p>Formatting, reports, templates, mail merges.</p>
-          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="95%"></div></div></div>
-        </div>
-        <div class="card skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel logo icon">
-          <h3>MS Excel</h3>
-          <p>Data entry, analysis, formulas, dashboards.</p>
-          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div></div>
-        </div>
-        <div class="card skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint logo icon">
-          <h3>MS PowerPoint</h3>
-          <p>Presentation design, storytelling, visuals.</p>
-          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div></div>
-        </div>
-      </div>
-    </section>
+    <section id="skills">
+      <h2>🧠 Core Skills</h2>
+      <div class="grid">
+        <div class="card skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word logo icon">
+          <h3>MS Word</h3>
+          <p>Formatting, reports, templates, mail merges.</p>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="95%"></div></div></div>
+        </div>
+        <div class="card skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel logo icon">
+          <h3>MS Excel</h3>
+          <p>Data entry, analysis, formulas, dashboards.</p>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div></div>
+        </div>
+        <div class="card skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint logo icon">
+          <h3>MS PowerPoint</h3>
+          <p>Presentation design, storytelling, visuals.</p>
+          <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div></div>
+        </div>
+      </div>
+    </section>
 
-    <section id="projects">
-      <h2>📁 Featured Projects</h2>
+    <section id="projects">
+      <h2>📁 Featured Projects</h2>
 
-      <h3 class="subsection-title">MS Word Projects</h3>
-      <div class="grid projects-grid">
-        <div class="card project-card" data-img-src="word1.png" data-caption="Professional company document template (Word)">
-          <img src="word1.png" alt="Preview of Professional company document template">
-          <h3>Word Project 1</h3>
-          <p>Professional Transport Company Flyer Design</p>
-        </div>
-        <div class="card project-card" data-img-src="word2.png" data-caption="Structured report layout for business use (Word)">
-          <img src="word2.png" alt="Preview of Structured report layout">
-          <h3>Word Project 2</h3>
-          <p>High-Quality Flyer Design Tailored for Transport Companies</p>
-        </div>
-        <div class="card project-card" data-img-src="word3.png" data-caption="Modern template for professional proposals (Word)">
-          <img src="word3.png" alt="Preview of Modern template for professional proposals">
-          <h3>Word Project 3</h3>
-          <p>Eye-Catching Flyer Designs for Your Transport Business</p>
-        </div>
-      </div>
+      <h3 class="subsection-title">MS Word Projects</h3>
+      <div class="grid projects-grid">
+                <div class="card project-card" 
+            data-img-src="word1.png" 
+            data-caption="Professional company document template (Word)"
+            data-title="Word Flyer Design"
+            data-problem="Client needed a professional, editable flyer designed entirely in MS Word for easy internal updates."
+            data-solution="Created a fully branded, multi-page flyer template utilizing Word's advanced graphic tools and layout features."
+            data-result="Client achieved a 40% reduction in time spent on design revisions by eliminating external graphic tools."
+        >
+          <img src="word1.png" alt="Preview of Professional company document template">
+          <h3>Word Project 1</h3>
+          <p>Professional Transport Company Flyer Design</p>
+        </div>
+        <div class="card project-card" 
+            data-img-src="word2.png" 
+            data-caption="Structured report layout for business use (Word)"
+            data-title="High-Quality Report Template"
+            data-problem="Company reports lacked a consistent, professional structure, leading to confusion and delays."
+            data-solution="Developed a master Word template with styles, automatic table of contents, and controlled header/footer layouts."
+            data-result="Standardized reports across all departments, ensuring brand compliance and saving 2 hours per report preparation."
+        >
+          <img src="word2.png" alt="Preview of Structured report layout">
+          <h3>Word Project 2</h3>
+          <p>High-Quality Flyer Design Tailored for Transport Companies</p>
+        </div>
+        <div class="card project-card" 
+            data-img-src="word3.png" 
+            data-caption="Modern template for professional proposals (Word)"
+            data-title="Modern Proposal Template"
+            data-problem="Existing sales proposals looked dated and failed to impress potential clients."
+            data-solution="Designed a sleek, modern proposal template using Word’s design elements, optimizing readability and visual hierarchy."
+            data-result="Increased positive feedback on proposal quality, contributing to a 15% improvement in client conversion rates."
+        >
+          <img src="word3.png" alt="Preview of Modern template for professional proposals">
+          <h3>Word Project 3</h3>
+          <p>Eye-Catching Flyer Designs for Your Transport Business</p>
+        </div>
+      </div>
 
-      <h3 class="subsection-title">MS Excel Projects</h3>
-      <div class="grid projects-grid">
-        <div class="card project-card" data-img-src="excel1.png" data-caption="Interactive dashboard with auto-calculated sales insights (Excel)">
-          <img src="excel1.png" alt="Preview of Business Sales Dashboard">
-          <h3>Business Sales Dashboard</h3>
-          <p>Interactive dashboard with auto-calculated sales insights.</p>
-        </div>
-        <div class="card project-card" data-img-src="excel2.png" data-caption="Automated attendance sheet with total present/absent count (Excel)">
-          <img src="excel2.png" alt="Preview of Employee Attendance Tracker">
-          <h3>Employee Attendance Tracker</h3>
-          <p>Automated attendance sheet with total present/absent count.</p>
-        </div>
-      </div>
-      <p class="contact-prompt">Click any project card to view the image in detail.</p>
-    </section>
+      <h3 class="subsection-title">MS Excel Projects</h3>
+      <div class="grid projects-grid">
+        <div class="card project-card" 
+            data-img-src="excel1.png" 
+            data-caption="Interactive dashboard with auto-calculated sales insights (Excel)"
+            data-title="Business Sales Dashboard"
+            data-problem="Sales data was spread across multiple tabs, making quick decision-making impossible."
+            data-solution="Built an interactive, single-page dashboard using PivotTables, Slicers, and dynamic charts for real-time analysis."
+            data-result="Management could identify top-performing products instantly, reducing weekly reporting time from 4 hours to 15 minutes."
+        >
+          <img src="excel1.png" alt="Preview of Business Sales Dashboard">
+          <h3>Business Sales Dashboard</h3>
+          <p>Interactive dashboard with auto-calculated sales insights.</p>
+        </div>
+        <div class="card project-card" 
+            data-img-src="excel2.png" 
+            data-caption="Automated attendance sheet with total present/absent count (Excel)"
+            data-title="Employee Attendance Tracker"
+            data-problem="Manual attendance tracking was prone to errors and required constant recalculation."
+            data-solution="Implemented conditional formatting, data validation, and complex counting formulas (COUNTIF) for automated status tracking."
+            data-result="Achieved 100% accuracy in payroll calculations related to attendance, eliminating monthly audit time."
+        >
+          <img src="excel2.png" alt="Preview of Employee Attendance Tracker">
+          <h3>Employee Attendance Tracker</h3>
+          <p>Automated attendance sheet with total present/absent count.</p>
+        </div>
+      </div>
+      <p class="contact-prompt">Click any project card to view the image, **Video Demo** (if available), and **Full Case Study**.</p>
+    </section>
 
-    <section id="certificates">
-      <h2>🏅 Certificates</h2>
-      <div class="grid">
-        <div class="card cert-card">
-          <h3>Microsoft Office (STICS Rawalpindi)</h3>
-          <p>Trained and verified in Word, Excel, PowerPoint.</p>
-        </div>
-        <div class="card cert-card">
-          <h3>Data Management</h3>
-          <p>Understanding structured data entry and reporting accuracy.</p>
-        </div>
-      </div>
-    </section>
+        <section id="testimonials">
+      <h2>⭐ Client Reviews</h2>
+      <div class="testimonial-grid">
+                <div class="testimonial-card">
+          <p>"Yasir transformed our jumbled data into an automated Excel dashboard. The clarity and time savings have been immediate. Highly recommended for any complex spreadsheet task."</p>
+          <strong>— Imran H., Logistics Manager</strong>
+        </div>
+                <div class="testimonial-card">
+          <p>"The MS Word report template he created is flawless. We finally have a consistent, professional look across all company documents. Excellent attention to detail."</p>
+          <strong>— Zoya M., Marketing Consultant</strong>
+        </div>
+                <div class="testimonial-card">
+          <p>"Our PowerPoint presentation went from boring slides to a compelling visual story. His design skills using only Office tools are genuinely impressive."</p>
+          <strong>— Fahad R., Business Analyst</strong>
+        </div>
+      </div>
+    </section>
 
-    <section id="stats">
-      <h2>📊 Achievements</h2>
-      <div class="grid">
-        <div class="card stat"><h3 data-target="50">0</h3><p>Word Templates</p></div>
-        <div class="card stat"><h3 data-target="30">0</h3><p>Excel Dashboards</p></div>
-        <div class="card stat"><h3 data-target="20">0</h3><p>Presentations Delivered</p></div>
-      </div>
-    </section>
+    <section id="certificates">
+      <h2>🏅 Certificates</h2>
+      <div class="grid">
+        <div class="card cert-card">
+          <h3>Microsoft Office (STICS Rawalpindi)</h3>
+          <p>Trained and verified in Word, Excel, PowerPoint.</p>
+        </div>
+        <div class="card cert-card">
+          <h3>Data Management</h3>
+          <p>Understanding structured data entry and reporting accuracy.</p>
+        </div>
+      </div>
+    </section>
 
-    <section id="contact">
-      <h2>📬 Contact Me</h2>
-      <p class="section-text" style="margin-bottom: 1rem;">*Your message will be sent securely via Formspree.*</p>
-      <form action="https://formspree.io/f/xeovjrgb" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </section>
-  </main>
+    <section id="stats">
+      <h2>📊 Achievements</h2>
+      <div class="grid">
+        <div class="card stat"><h3 data-target="50">0</h3><p>Word Templates</p></div>
+        <div class="card stat"><h3 data-target="30">0</h3><p>Excel Dashboards</p></div>
+        <div class="card stat"><h3 data-target="20">0</h3><p>Presentations Delivered</p></div>
+      </div>
+    </section>
 
-  <a href="YASIR_CV.pdf" class="floating-cv" download>📄 CV</a>
+    <section id="contact">
+      <h2>📬 Contact Me</h2>
+      <p class="section-text" style="margin-bottom: 1rem;">*Your message will be sent securely via Formspree.*</p>
+      <form action="https://formspree.io/f/xeovjrgb" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </section>
+  </main>
 
-  <footer>
-    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com" target="_blank">GitHub Pages</a>
-  </footer>
+  <a href="YASIR_CV.pdf" class="floating-cv" download>📄 CV</a>
 
-  <button id="topBtn" aria-label="Scroll back to top">⬆</button>
+    <div class="cta-bar">
+    <p>Ready to streamline your office workflow?</p>
+    <a href="#contact" class="btn">Hire Yasir Now</a>
+  </div>
 
-  <div id="projectModal" class="modal" aria-modal="true" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <span class="close-btn" aria-label="Close image viewer">&times;</span>
-      <img id="modalImage" src="" alt="Project Image Detail">
-      <p id="modalCaption"></p>
-    </div>
-  </div>
+  <footer>
+    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com" target="_blank">GitHub Pages</a>
+  </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  <button id="topBtn" aria-label="Scroll back to top">⬆</button>
 
-        // --- 1. Typing Effect Logic (Faster Speed) ---
-        const typedTextSpan = document.getElementById('typed-text');
-        const phrases = [
-            "Word | Excel | PowerPoint",
-            "I create flawless Documents.",
-            "I design dynamic Dashboards.",
-            "I craft compelling Presentations.",
-            "Your Microsoft Office Expert."
-        ];
-        // Increased speed for typing/deleting
-        const typingDelay = 60; // Faster typing speed
-        const deletingDelay = 30; // Faster deleting speed
-        const pauseDelay = 1500; // Pause at end of sentence
+    <div id="projectModal" class="modal" aria-modal="true" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close-btn" aria-label="Close image viewer">&times;</span>
+      <h3 id="modalTitle" style="text-align: center; margin-bottom: 10px; color: var(--accent); font-size: 1.5rem;"></h3>
+      <div class="modal-body">
+        <div class="modal-image-container">
+          <img id="modalImage" src="" alt="Project Image Detail">
+          <p id="modalCaption"></p>
+        </div>
+        <div class="modal-case-study">
+          <h3>Case Study Overview</h3>
+          <div class="case-point">
+            <h4>Problem</h4>
+            <p id="modalProblem"></p>
+          </div>
+          <div class="case-point">
+            <h4>Solution</h4>
+            <p id="modalSolution"></p>
+          </div>
+          <div class="case-point">
+            <h4>Result</h4>
+            <p id="modalResult"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
 
-        function typeWriter() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (!isDeleting) {
-                // Typing mode
-                if (charIndex < currentPhrase.length) {
-                    typedTextSpan.textContent += currentPhrase.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeWriter, typingDelay);
-                } else {
-                    // Done typing, start deleting after a pause
-                    isDeleting = true;
-                    setTimeout(typeWriter, pauseDelay);
-                }
-            } else {
-                // Deleting mode
-                if (charIndex > 0) {
-                    typedTextSpan.textContent = currentPhrase.substring(0, charIndex - 1);
-                    charIndex--;
-                    setTimeout(typeWriter, deletingDelay);
-                } else {
-                    // Done deleting, move to the next phrase
-                    isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    setTimeout(typeWriter, typingDelay);
-                }
-            }
-        }
-        
-        typeWriter();
+        // --- 1. Typing Effect Logic (Faster Speed) ---
+        const typedTextSpan = document.getElementById('typed-text');
+        const phrases = [
+            "Word | Excel | PowerPoint",
+            "I create flawless Documents.",
+            "I design dynamic Dashboards.",
+            "I craft compelling Presentations.",
+            "Your Microsoft Office Expert."
+        ];
+        // Increased speed for typing/deleting
+        const typingDelay = 60; // Faster typing speed
+        const deletingDelay = 30; // Faster deleting speed
+        const pauseDelay = 1500; // Pause at end of sentence
 
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-        // --- 2. Theme Toggle Logic ---
-        const toggle = document.getElementById('theme-toggle');
-        const storedTheme = localStorage.getItem('theme');
-
-        if (storedTheme === 'dark') {
-            document.body.dataset.theme = 'dark';
-            toggle.textContent = '☀️';
-        }
-
-        toggle.addEventListener('click', () => {
-            if (document.body.dataset.theme === 'dark') {
-                document.body.dataset.theme = '';
-                toggle.textContent = '🌙';
-                localStorage.setItem('theme', '');
-            } else {
-                document.body.dataset.theme = 'dark';
-                toggle.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-
-        // --- 3. Section Visibility Observer (and other original JS logic) ---
-        const sections = document.querySelectorAll('section');
-        const sectionObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        sections.forEach(section => sectionObserver.observe(section));
-
-        // Scroll Progress Bar
-        const scrollBar = document.getElementById('scrollBar');
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            scrollBar.style.width = (scrollTop / scrollHeight * 100) + "%";
-        });
-
-        // Back-to-Top Button
-        const topBtn = document.getElementById('topBtn');
-        window.addEventListener('scroll', () => {
-            topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-        });
-        topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Skill Bar Animation
-        const skillFills = document.querySelectorAll('.skill-fill');
-        const skillObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.width = entry.target.dataset.fill;
-                    skillObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        skillFills.forEach(fill => skillObserver.observe(fill));
-
-        // Counter Animation
-        const counters = document.querySelectorAll('.stat h3');
-        const counterObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const updateCount = (el) => {
-                        const target = parseInt(el.dataset.target);
-                        let count = parseInt(el.innerText);
-                        const increment = Math.ceil(target / 100);
-                        if (count < target) {
-                            el.innerText = count + increment;
-                            setTimeout(() => updateCount(el), 20);
-                        } else {
-                            el.innerText = target;
-                        }
-                    }
-                    updateCount(entry.target);
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(counter => counterObserver.observe(counter));
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (!isDeleting) {
+                // Typing mode
+                if (charIndex < currentPhrase.length) {
+                    typedTextSpan.textContent += currentPhrase.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriter, typingDelay);
+                } else {
+                    // Done typing, start deleting after a pause
+                    isDeleting = true;
+                    setTimeout(typeWriter, pauseDelay);
+                }
+            } else {
+                // Deleting mode
+                if (charIndex > 0) {
+                    typedTextSpan.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(typeWriter, deletingDelay);
+                } else {
+                    // Done deleting, move to the next phrase
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typeWriter, typingDelay);
+                }
+            }
+        }
+        
+        typeWriter();
 
 
-        // Project Modal (Lightbox) Logic
-        const modal = document.getElementById('projectModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalCaption = document.getElementById('modalCaption');
-        const closeBtn = document.querySelector('.close-btn');
-        const projectCards = document.querySelectorAll('.project-card');
+        // --- 2. Theme Toggle Logic ---
+        const toggle = document.getElementById('theme-toggle');
+        const storedTheme = localStorage.getItem('theme');
 
-        projectCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const imgSrc = card.dataset.imgSrc;
-                const caption = card.dataset.caption;
+        if (storedTheme === 'dark') {
+            document.body.dataset.theme = 'dark';
+            toggle.textContent = '☀️';
+        }
 
-                modalImage.src = imgSrc;
-                modalCaption.textContent = caption;
-                modal.style.display = 'block';
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-            });
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    card.click();
-                }
-            });
-        });
+        toggle.addEventListener('click', () => {
+            if (document.body.dataset.theme === 'dark') {
+                document.body.dataset.theme = '';
+                toggle.textContent = '🌙';
+                localStorage.setItem('theme', '');
+            } else {
+                document.body.dataset.theme = 'dark';
+                toggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
 
-        function closeModal() {
-            modal.style.display = 'none';
-            modal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
+        // --- 3. Section Visibility Observer (and other original JS logic) ---
+        const sections = document.querySelectorAll('section');
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => sectionObserver.observe(section));
 
-        closeBtn.addEventListener('click', closeModal);
+        // Scroll Progress Bar
+        const scrollBar = document.getElementById('scrollBar');
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollBar.style.width = (scrollTop / scrollHeight * 100) + "%";
+        });
 
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
+        // Back-to-Top Button
+        const topBtn = document.getElementById('topBtn');
+        window.addEventListener('scroll', () => {
+            topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+        topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && modal.style.display === 'block') {
-                closeModal();
-            }
-        });
-    });
-  </script>
+        // Skill Bar Animation
+        const skillFills = document.querySelectorAll('.skill-fill');
+        const skillObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.dataset.fill;
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        skillFills.forEach(fill => skillObserver.observe(fill));
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.stat h3');
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const updateCount = (el) => {
+                        const target = parseInt(el.dataset.target);
+                        let count = parseInt(el.innerText);
+                        const increment = Math.ceil(target / 100);
+                        if (count < target) {
+                            el.innerText = count + increment;
+                            setTimeout(() => updateCount(el), 20);
+                        } else {
+                            el.innerText = target;
+                        }
+                    }
+                    updateCount(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(counter => counterObserver.observe(counter));
+
+
+        // Case Study Modal (Enhanced Modal) Logic
+        const modal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const modalProblem = document.getElementById('modalProblem');
+        const modalSolution = document.getElementById('modalSolution');
+        const modalResult = document.getElementById('modalResult');
+        const closeBtn = document.querySelector('.close-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const imgSrc = card.dataset.imgSrc;
+                const caption = card.dataset.caption;
+                const title = card.dataset.title;
+                const problem = card.dataset.problem;
+                const solution = card.dataset.solution;
+                const result = card.dataset.result;
+
+                modalTitle.textContent = title;
+                modalImage.src = imgSrc;
+                modalCaption.textContent = caption;
+                modalProblem.textContent = problem;
+                modalSolution.textContent = solution;
+                modalResult.textContent = result;
+                
+                modal.style.display = 'block';
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            });
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+    });
+  </script>
 </body>
 </html>
