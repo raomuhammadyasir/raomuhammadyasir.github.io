@@ -112,11 +112,11 @@
     }
     .subsection-title { text-align:center; color:var(--text); margin:2rem 0 1rem; font-size: 1.5rem; }
     
-    /* CRITICAL FIX: Ensures about me text wraps and centers correctly */
+    /* CRITICAL FIX FOR TEXT WRAPPING */
     .section-text { 
         text-align:center; 
-        max-width:850px; 
-        margin:auto; 
+        max-width:850px; /* Limits the width of the text block */
+        margin:auto; /* Centers the text block on the page */
     }
 
     /* --- Grid and Card Styles --- */
@@ -297,10 +297,11 @@
 </head>
 <body>
 
-  <div id="scrollBar"></div>
+  <div id="scrollBar" style="position: fixed; top: 0; left: 0; height: 5px; width: 0%; background: var(--accent); z-index: 100;"></div>
 
   <header>
     <div class="header-content">
+        <!-- IMAGE: yasir_portfolio.png from your repository -->
         <img src="yasir_portfolio.png" alt="Rao Muhammad Yasir Profile Picture" class="profile-pic">
         
         <h1>Rao Muhammad Yasir</h1>
@@ -323,30 +324,32 @@
   <main>
     <section id="about">
       <h2>💡 About Me</h2>
-      <p class="section-text">
-        I am <strong>Rao Muhammad Yasir</strong>, a dedicated Microsoft Office Expert. I empower professionals and
-        businesses to achieve peak efficiency by creating <strong>visually compelling</strong> and <strong>functionally flawless</strong>
-        documents, spreadsheets, and presentations using my mastery of <strong>Word, Excel, and PowerPoint</strong>.
-      </p>
+      <div class="section-text">
+        <p>
+          I am <strong>Rao Muhammad Yasir</strong>, a dedicated Microsoft Office Expert. I empower professionals and
+          businesses to achieve peak efficiency by creating <strong>visually compelling</strong> and <strong>functionally flawless</strong>
+          documents, spreadsheets, and presentations using my mastery of <strong>Word, Excel, and PowerPoint</strong>.
+        </p>
+      </div>
     </section>
 
     <section id="skills">
       <h2>🧠 Core Skills</h2>
       <div class="grid">
         <div class="card skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word logo icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word logo icon" onerror="this.onerror=null;this.src='https://placehold.co/80x80/2962FF/ffffff?text=Word'">
           <h3>MS Word</h3>
           <p>Formatting, reports, templates, mail merges.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="95%"></div></div></div>
         </div>
         <div class="card skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel logo icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel logo icon" onerror="this.onerror=null;this.src='https://placehold.co/80x80/1D6F42/ffffff?text=Excel'">
           <h3>MS Excel</h3>
           <p>Data entry, analysis, formulas, dashboards.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div></div>
         </div>
         <div class="card skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint logo icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint logo icon" onerror="this.onerror=null;this.src='https://placehold.co/80x80/D24726/ffffff?text=PPT'">
           <h3>MS PowerPoint</h3>
           <p>Presentation design, storytelling, visuals.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div></div>
@@ -359,17 +362,20 @@
 
       <h3 class="subsection-title">MS Word Projects</h3>
       <div class="grid projects-grid">
-                <div class="card project-card" data-img-src="word1.png" data-caption="Professional company document template (Word)">
+        <!-- Project 1: Using uploaded image file -->
+        <div class="card project-card" data-img-src="word1.png" data-caption="Professional company document template (Word)" tabindex="0" role="button" aria-label="View Word Project 1: Transport Flyer">
           <img src="word1.png" alt="Preview of Professional company document template">
           <h3>Word Project 1</h3>
           <p>Professional Transport Company Flyer Design</p>
         </div>
-                <div class="card project-card" data-img-src="word2.png" data-caption="Structured report layout for business use (Word)">
+        <!-- Project 2: Using uploaded image file -->
+        <div class="card project-card" data-img-src="word2.png" data-caption="Structured report layout for business use (Word)" tabindex="0" role="button" aria-label="View Word Project 2: Structured Report Layout">
           <img src="word2.png" alt="Preview of Structured report layout">
           <h3>Word Project 2</h3>
           <p>High-Quality Flyer Design Tailored for Transport Companies</p>
         </div>
-                <div class="card project-card" data-img-src="word3.png" data-caption="Modern template for professional proposals (Word)">
+        <!-- Project 3: Using uploaded image file -->
+        <div class="card project-card" data-img-src="word3.png" data-caption="Modern template for professional proposals (Word)" tabindex="0" role="button" aria-label="View Word Project 3: Professional Proposals">
           <img src="word3.png" alt="Preview of Modern template for professional proposals">
           <h3>Word Project 3</h3>
           <p>Eye-Catching Flyer Designs for Your Transport Business</p>
@@ -378,12 +384,14 @@
 
       <h3 class="subsection-title">MS Excel Projects</h3>
       <div class="grid projects-grid">
-                <div class="card project-card" data-img-src="excel1.png" data-caption="Interactive dashboard with auto-calculated sales insights (Excel)">
+        <!-- Project 4: Using uploaded image file -->
+        <div class="card project-card" data-img-src="excel1.png" data-caption="Interactive dashboard with auto-calculated sales insights (Excel)" tabindex="0" role="button" aria-label="View Excel Project 1: Sales Dashboard">
           <img src="excel1.png" alt="Preview of Business Sales Dashboard">
           <h3>Business Sales Dashboard</h3>
           <p>Interactive dashboard with auto-calculated sales insights.</p>
         </div>
-                <div class="card project-card" data-img-src="excel2.png" data-caption="Automated attendance sheet with total present/absent count (Excel)">
+        <!-- Project 5: Using uploaded image file -->
+        <div class="card project-card" data-img-src="excel2.png" data-caption="Automated attendance sheet with total present/absent count (Excel)" tabindex="0" role="button" aria-label="View Excel Project 2: Attendance Tracker">
           <img src="excel2.png" alt="Preview of Employee Attendance Tracker">
           <h3>Employee Attendance Tracker</h3>
           <p>Automated attendance sheet with total present/absent count.</p>
@@ -417,7 +425,7 @@
 
     <section id="contact">
       <h2>📬 Contact Me</h2>
-      <p class="section-text" style="margin-bottom: 1rem;">*Your message will be sent securely via Formspree.*</p>
+      <p class="section-text" style="margin-bottom: 1rem;">*Your message will be sent securely via Formspree. Ensure you change the action URL.*</p>
       <form action="https://formspree.io/f/xeovjrgb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
@@ -435,7 +443,8 @@
 
   <button id="topBtn" aria-label="Scroll back to top">⬆</button>
 
-    <div id="projectModal" class="modal" aria-modal="true" role="dialog" aria-hidden="true">
+  <!-- Project Modal (Lightbox) -->
+  <div id="projectModal" class="modal" aria-modal="true" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <span class="close-btn" aria-label="Close image viewer">&times;</span>
       <img id="modalImage" src="" alt="Project Image Detail">
@@ -495,7 +504,8 @@
         const toggle = document.getElementById('theme-toggle');
         const storedTheme = localStorage.getItem('theme');
 
-        if (storedTheme === 'dark') {
+        // Check for stored preference or system preference
+        if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.body.dataset.theme = 'dark';
             toggle.textContent = '☀️';
         }
@@ -504,7 +514,7 @@
             if (document.body.dataset.theme === 'dark') {
                 document.body.dataset.theme = '';
                 toggle.textContent = '🌙';
-                localStorage.setItem('theme', '');
+                localStorage.setItem('theme', 'light');
             } else {
                 document.body.dataset.theme = 'dark';
                 toggle.textContent = '☀️';
