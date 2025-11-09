@@ -35,13 +35,13 @@
 
     header { 
         text-align: center; 
-        padding: 5rem 1rem 7rem; /* Increased padding bottom for better spacing */
+        padding: 5rem 1rem 7rem;
         background: linear-gradient(135deg, #1e3a8a, #3b82f6); 
         color:white;
         position: relative;
     }
     
-    /* Container for the dynamic header content */
+    /* FIX: Ensure content is centered */
     .header-content {
         display: flex;
         flex-direction: column;
@@ -52,13 +52,11 @@
     header h1 { 
         font-size:2.7rem; 
         margin-bottom:0.5rem; 
-        /* Animation: Fades in and slides right */
-        animation: split-in 1.5s ease-out forwards;
-        opacity: 0;
-        transform: translateX(50px);
+        /* Animation removed, replaced with simple fade-in */
+        animation: fadeIn 1s ease-in-out;
     }
     
-    /* Image Styles and Animation */
+    /* Image Styles - using your uploaded file */
     .profile-pic {
         width: 130px; 
         height: 130px;
@@ -67,20 +65,11 @@
         margin-bottom: 1.5rem;
         border: 4px solid rgba(255, 255, 255, 0.7); 
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        /* Animation: Fades in and slides left */
-        animation: split-in 1.5s ease-out forwards;
-        animation-delay: 0.1s; /* Slight delay for staggered look */
-        opacity: 0;
-        transform: translateX(-50px);
+        /* Animation removed, replaced with simple fade-in */
+        animation: fadeIn 1s ease-in-out;
     }
 
-    /* Keyframe Animation for Name and Picture Split */
-    @keyframes split-in {
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
+    /* REMOVED @keyframes split-in { ... } to fix the issue */
 
     /* Style for the typing text container */
     header .typing-container { 
@@ -128,7 +117,13 @@
       transform: translateY(0);
     }
     .subsection-title { text-align:center; color:var(--text); margin:2rem 0 1rem; font-size: 1.5rem; }
-    .section-text { text-align:center; max-width:850px; margin:auto; }
+    
+    /* FIX: Added max-width and margin:auto to ensure text wraps correctly in the center */
+    .section-text { 
+        text-align:center; 
+        max-width:850px; 
+        margin:auto; 
+    }
     .contact-prompt { text-align: center; margin-top: 1rem; opacity: 0.7; font-style: italic; font-size: 0.9rem; }
 
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
@@ -372,13 +367,13 @@
 
       <h3 class="subsection-title">MS Word Projects</h3>
       <div class="grid projects-grid">
-                <div class="card project-card" data-img-src="image_9bd3e8.png" data-caption="Professional company document template (Word)">
-          <img src="image_9bd3e8.png" alt="Preview of Professional company document template">
+                <div class="card project-card" data-img-src="word1.png" data-caption="Professional company document template (Word)">
+          <img src="word1.png" alt="Preview of Professional company document template">
           <h3>Word Project 1</h3>
           <p>Professional Transport Company Flyer Design</p>
         </div>
-                <div class="card project-card" data-img-src="image_9bdf29.png" data-caption="Structured report layout for business use (Word)">
-          <img src="image_9bdf29.png" alt="Preview of Structured report layout">
+                <div class="card project-card" data-img-src="word2.png" data-caption="Structured report layout for business use (Word)">
+          <img src="word2.png" alt="Preview of Structured report layout">
           <h3>Word Project 2</h3>
           <p>High-Quality Flyer Design Tailored for Transport Companies</p>
         </div>
