@@ -11,12 +11,14 @@
       --text: #1e293b;
       --card: #fff;
       --accent: #3b82f6;
+      --scroll-bg: #d1d5db;
     }
     [data-theme="dark"] {
       --bg: #0f172a;
       --text: #e2e8f0;
       --card: #1e293b;
       --accent: #60a5fa;
+      --scroll-bg: #1e293b;
     }
     * {
       margin: 0;
@@ -32,6 +34,17 @@
       color: var(--text);
       line-height: 1.6;
       transition: 0.4s ease;
+    }
+    /* Scroll progress bar */
+    #scrollBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 100;
+      transition: width 0.2s ease;
     }
     header {
       text-align: center;
@@ -83,10 +96,12 @@
     #theme-toggle:hover {
       opacity: 0.8;
     }
-    section {
-      padding: 3rem 1.5rem;
+    main {
       max-width: 1100px;
       margin: auto;
+    }
+    section {
+      padding: 3rem 1.5rem;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
@@ -126,6 +141,10 @@
       width: 100%;
       border-radius: 10px;
       margin-bottom: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+    .projects img:hover {
+      transform: scale(1.05);
     }
     .btn {
       display: inline-block;
@@ -149,6 +168,27 @@
       font-size: 0.9rem;
       border-top: 1px solid rgba(0,0,0,0.1);
     }
+    /* Skill bars */
+    .skill {
+      margin: 1rem 0;
+    }
+    .skill-name {
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+    .skill-bar {
+      background: var(--scroll-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      height: 15px;
+    }
+    .skill-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0;
+      border-radius: 8px;
+      transition: width 1s ease-in-out;
+    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -156,6 +196,8 @@
   </style>
 </head>
 <body>
+
+  <div id="scrollBar"></div>
 
   <header>
     <h1>Rao Muhammad Yasir</h1>
@@ -175,9 +217,8 @@
     <section id="about">
       <h2>💡 About Me</h2>
       <p style="text-align:center; max-width:850px; margin:auto;">
-        I’m <strong>Rao Muhammad Yasir</strong> — a skilled <b>Microsoft Office Specialist</b> with expertise in document creation,
-        spreadsheets, and presentation design.  
-        I combine <b>accuracy</b>, <b>clarity</b>, and <b>visual appeal</b> to help professionals and organizations work efficiently using Word, Excel, and PowerPoint.
+        I’m <strong>Rao Muhammad Yasir</strong> — a skilled <b>Microsoft Office Specialist</b> with expertise in Word, Excel, and PowerPoint.  
+        I help professionals and organizations work efficiently by combining <b>accuracy</b>, <b>clarity</b>, and <b>visual appeal</b> in every project.
       </p>
     </section>
 
@@ -187,17 +228,29 @@
         <div class="card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word">
           <h3>MS Word</h3>
-          <p>Professional formatting, reports, templates, and mail merges.</p>
+          <p>Formatting, reports, templates, mail merges.</p>
+          <div class="skill">
+            <div class="skill-name">Proficiency</div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+          </div>
         </div>
         <div class="card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel">
           <h3>MS Excel</h3>
-          <p>Data entry, analysis, formulas, and dynamic dashboards.</p>
+          <p>Data entry, analysis, formulas, dashboards.</p>
+          <div class="skill">
+            <div class="skill-name">Proficiency</div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+          </div>
         </div>
         <div class="card">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint">
           <h3>MS PowerPoint</h3>
-          <p>Presentation design, transitions, and visual storytelling.</p>
+          <p>Presentation design, transitions, storytelling.</p>
+          <div class="skill">
+            <div class="skill-name">Proficiency</div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+          </div>
         </div>
       </div>
     </section>
@@ -278,6 +331,15 @@
       });
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
+
+    // Scroll progress bar
+    const scrollBar = document.getElementById('scrollBar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      scrollBar.style.width = scrollPercent + "%";
+    });
   </script>
 
 </body>
