@@ -209,9 +209,9 @@
       </div>
     </section>
 
-    <!-- Contact / Newsletter / CV -->
+    <!-- Contact / CV -->
     <section id="contact">
-      <h2>📬 Contact & Newsletter</h2>
+      <h2>📬 Contact & CV</h2>
       <form action="https://formspree.io/f/yourformid" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
@@ -219,18 +219,12 @@
         <button type="submit" class="btn">Send Message / Subscribe</button>
       </form>
       <br>
-      <!-- CV Card -->
-      <div class="card" style="max-width:400px; margin:auto; text-align:center; padding:1.5rem;">
-        <h3>📄 Download My CV</h3>
-        <p>Get a copy of my Microsoft Office Specialist CV.</p>
-        <a href="YASIR_CV.pdf" class="btn" download target="_blank">⬇ Download CV</a>
-
-      </div>
+      <a href="YASIR_CV.pdf" class="btn" download target="_blank">⬇ Download My CV</a>
     </section>
   </main>
 
   <footer>
-    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com/yourusername/yourrepo" target="_blank">GitHub Pages</a>
+    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com/raomuhammadyasir/raomuhammadyasir.github.io" target="_blank">GitHub Pages</a>
   </footer>
 
   <button id="topBtn">⬆</button>
@@ -240,7 +234,7 @@
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
 
-    // Theme toggle with memory
+    // Theme toggle
     const toggle = document.getElementById('theme-toggle');
     if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
     toggle.addEventListener('click',()=>{ 
@@ -264,12 +258,29 @@
 
     // Animate skill bars
     const skillFills=document.querySelectorAll('.skill-fill');
-    const skillObserver=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); } });},{threshold:0.5});
+    const skillObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); }
+      });
+    },{threshold:0.5});
     skillFills.forEach(fill=>skillObserver.observe(fill));
 
     // Animate counters
     const counters=document.querySelectorAll('.stat h3');
-    const counterObserver=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ const updateCount=(el)=>{ const target=parseInt(el.dataset.target); let count=parseInt(el.innerText); const increment=Math.ceil(target/100); if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target; } updateCount(entry.target); counterObserver.unobserve(entry.target); } });},{threshold:0.5});
+    const counterObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const updateCount=(el)=>{
+            const target=parseInt(el.dataset.target);
+            let count=parseInt(el.innerText);
+            const increment=Math.ceil(target/100);
+            if(count<target){ el.innerText=count+increment; setTimeout(()=>updateCount(el),20); } else el.innerText=target;
+          }
+          updateCount(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.5});
     counters.forEach(counter=>counterObserver.observe(counter));
 
     // Testimonials slider
@@ -282,5 +293,3 @@
 
 </body>
 </html>
-
-
