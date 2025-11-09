@@ -187,7 +187,7 @@
     <!-- Contact / CV -->
     <section id="contact">
       <h2>📬 Contact & CV</h2>
-      <form action="https://formspree.io/f/yourformid" method="POST">
+      <form action="https://formspree.io/f/xeovjrgb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" required></textarea>
@@ -199,15 +199,17 @@
   </main>
 
   <footer>
-    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com">GitHub Pages</a>
+    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com/raomuhammadyasir/raomuhammadyasir.github.io" target="_blank">GitHub Pages</a>
   </footer>
 
   <button id="topBtn">⬆</button>
 
   <script>
+    // Cursor
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
 
+    // Theme toggle
     const toggle = document.getElementById('theme-toggle');
     if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
     toggle.addEventListener('click',()=>{ 
@@ -215,17 +217,21 @@
       else { document.body.dataset.theme='dark'; toggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
     });
 
+    // Section fade-in
     const sections=document.querySelectorAll('section');
     const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });},{threshold:0.1});
     sections.forEach(section=>observer.observe(section));
 
+    // Scroll progress bar
     const scrollBar=document.getElementById('scrollBar');
     window.addEventListener('scroll',()=>{ const scrollTop=document.documentElement.scrollTop; const scrollHeight=document.documentElement.scrollHeight-window.innerHeight; scrollBar.style.width=(scrollTop/scrollHeight*100)+"%"; });
 
+    // Back to top
     const topBtn=document.getElementById('topBtn');
     window.addEventListener('scroll',()=>{ topBtn.style.display=window.scrollY>300?'block':'none'; });
     topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
+    // Animate skill bars
     const skillFills=document.querySelectorAll('.skill-fill');
     const skillObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
@@ -234,6 +240,7 @@
     },{threshold:0.5});
     skillFills.forEach(fill=>skillObserver.observe(fill));
 
+    // Animate counters
     const counters=document.querySelectorAll('.stat h3');
     const counterObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
@@ -254,4 +261,3 @@
 
 </body>
 </html>
-
