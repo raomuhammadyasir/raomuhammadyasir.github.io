@@ -21,7 +21,11 @@
       --accent: #60a5fa;
       --scroll-bg: #1e293b;
     }
-    /* Removed custom cursor setup */
+    /* FIX: Ensures bold text is readable in dark mode */
+    [data-theme="dark"] strong, [data-theme="dark"] b {
+      color: var(--text); 
+    }
+
     * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
@@ -31,7 +35,26 @@
 
     header { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
     header h1 { font-size:2.7rem; margin-bottom:0.5rem; animation: fadeIn 1s ease-in-out; }
-    header p { font-size:1.2rem; opacity:0.9; animation: fadeIn 2s ease-in-out; }
+    
+    /* Style for the typing text container */
+    header .typing-container { 
+      font-size:1.2rem; 
+      opacity:0.9; 
+      animation: fadeIn 2s ease-in-out; 
+      min-height: 2rem; /* Reserve space to prevent layout shift */
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    /* Typing cursor animation */
+    #typed-text:after {
+      content: '|';
+      display: inline;
+      animation: blink 0.7s infinite;
+      margin-left: 0.15rem;
+      font-weight: 300;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
 
     nav { background: var(--card); text-align:center; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:50; }
     nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; padding: 0.5rem 0; }
@@ -54,13 +77,12 @@
 
     .card { background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
     .project-card, .skill-card { cursor: pointer; }
-    /* Added focus state for better keyboard navigation */
     .card:hover, .card:focus-within { transform: translateY(-5px) scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
 
     .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: transform 0.3s ease; }
 
     .project-card img { width:100%; height:auto; border-radius:10px; margin-bottom:0.8rem; }
-    .project-card:hover h3, .project-card:hover p { color: white; } /* Ensures text stays white on hover */
+    .project-card:hover h3, .project-card:hover p { color: white; }
 
     .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; border:none; }
     .btn:hover { background:#2563eb; transform: translateY(-2px); }
@@ -73,7 +95,7 @@
     .skill-name { font-weight:500; margin-bottom:0.3rem; }
     .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
     .skill-fill { height:100%; background: var(--accent); width:0%; border-radius:8px; transition: width 1.5s ease-in-out; }
-    .skill-card:hover .skill-fill { background: white; } /* Adjust fill color on hover */
+    .skill-card:hover .skill-fill { background: white; }
 
     .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
     .stat:hover h3, .stat:focus h3 { color:white; }
@@ -177,7 +199,9 @@
 
   <header>
     <h1>Rao Muhammad Yasir</h1>
-    <p>Microsoft Office Expert • Word | Excel | PowerPoint</p>
+    <p class="typing-container">
+        <span id="typed-text"></span>
+    </p>
   </header>
 
   <nav>
@@ -313,7 +337,58 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. Theme Toggle Logic
+
+        // --- 1. Typing Effect Logic ---
+        const typedTextSpan = document.getElementById('typed-text');
+        const phrases = [
+            "Word | Excel | PowerPoint",
+            "I create flawless Documents.",
+            "I design dynamic Dashboards.",
+            "I craft compelling Presentations.",
+            "Your Microsoft Office Expert."
+        ];
+        const typingDelay = 100; // Speed of typing
+        const deletingDelay = 50; // Speed of deleting
+        const pauseDelay = 1500; // Pause at end of sentence
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (!isDeleting) {
+                // Typing mode
+                if (charIndex < currentPhrase.length) {
+                    typedTextSpan.textContent += currentPhrase.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriter, typingDelay);
+                } else {
+                    // Done typing, start deleting after a pause
+                    isDeleting = true;
+                    setTimeout(typeWriter, pauseDelay);
+                }
+            } else {
+                // Deleting mode
+                if (charIndex > 0) {
+                    typedTextSpan.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(typeWriter, deletingDelay);
+                } else {
+                    // Done deleting, move to the next phrase
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typeWriter, typingDelay);
+                }
+            }
+        }
+        
+        // Start the typing effect when the DOM is loaded
+        typeWriter();
+
+
+        // --- 2. Theme Toggle Logic ---
         const toggle = document.getElementById('theme-toggle');
         const storedTheme = localStorage.getItem('theme');
 
@@ -334,7 +409,7 @@
             }
         });
 
-        // 2. Section Visibility Observer
+        // --- 3. Section Visibility Observer (and other original JS logic) ---
         const sections = document.querySelectorAll('section');
         const sectionObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -345,7 +420,7 @@
         }, { threshold: 0.1 });
         sections.forEach(section => sectionObserver.observe(section));
 
-        // 3. Scroll Progress Bar
+        // Scroll Progress Bar
         const scrollBar = document.getElementById('scrollBar');
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
@@ -353,14 +428,14 @@
             scrollBar.style.width = (scrollTop / scrollHeight * 100) + "%";
         });
 
-        // 4. Back-to-Top Button
+        // Back-to-Top Button
         const topBtn = document.getElementById('topBtn');
         window.addEventListener('scroll', () => {
             topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
         });
         topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // 5. Skill Bar Animation
+        // Skill Bar Animation
         const skillFills = document.querySelectorAll('.skill-fill');
         const skillObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -372,7 +447,7 @@
         }, { threshold: 0.5 });
         skillFills.forEach(fill => skillObserver.observe(fill));
 
-        // 6. Counter Animation
+        // Counter Animation
         const counters = document.querySelectorAll('.stat h3');
         const counterObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -396,7 +471,7 @@
         counters.forEach(counter => counterObserver.observe(counter));
 
 
-        // 7. Project Modal (Lightbox) Logic
+        // Project Modal (Lightbox) Logic
         const modal = document.getElementById('projectModal');
         const modalImage = document.getElementById('modalImage');
         const modalCaption = document.getElementById('modalCaption');
@@ -412,9 +487,8 @@
                 modalCaption.textContent = caption;
                 modal.style.display = 'block';
                 modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling background
+                document.body.style.overflow = 'hidden';
             });
-            // Add keyboard support for focus/enter key
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -431,14 +505,12 @@
 
         closeBtn.addEventListener('click', closeModal);
 
-        // Close when clicking outside the modal content
         window.addEventListener('click', (event) => {
             if (event.target === modal) {
                 closeModal();
             }
         });
 
-        // Close with the Escape key
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && modal.style.display === 'block') {
                 closeModal();
