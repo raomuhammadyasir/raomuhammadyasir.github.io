@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Word, Excel, PowerPoint professional portfolio.">
     <link rel="icon" type="image/png" href="favicon.png"> 
-    <style>
+  <style>
     :root {
       --bg: #f4f6f9;
       --text: #1e293b;
@@ -28,7 +28,7 @@
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
-    /* Smooth Scroll Transition Added */
+    /* Smooth Scroll Transition */
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
 
@@ -70,7 +70,7 @@
     section { padding: 3rem 1.5rem; opacity:0; transform: translateY(20px); transition: all 0.6s ease; }
     section.visible { opacity:1; transform: translateY(0); }
 
-    /* Animated Section Titles Added */
+    /* Animated Section Titles */
     h2 { 
       text-align:center; 
       font-size:1.9rem; 
@@ -85,7 +85,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-
 
     .subsection-title { text-align:center; color:var(--text); margin:2rem 0 1rem; font-size: 1.5rem; }
     .section-text { text-align:center; max-width:850px; margin:auto; }
@@ -106,7 +105,7 @@
 
     .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: transform 0.3s ease; }
 
-    /* Project Hover Effects Added */
+    /* Project Hover Effects */
     .project-card { 
       overflow: hidden; 
       position: relative;
@@ -124,6 +123,7 @@
       transform: translateY(100%);
       transition: transform 0.3s ease;
       font-size: 0.9rem;
+      text-align: center;
     }
     .project-card:hover::after, .project-card:focus-within::after {
       transform: translateY(0);
@@ -135,38 +135,7 @@
     .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; border:none; }
     .btn:hover { background:#2563eb; transform: translateY(-2px); }
 
-    /* Testimonial Slider Styles */
-    .testimonial-grid {
-      max-width: 800px;
-      margin: 0 auto 3rem;
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    .testimonial-card {
-      flex: 0 0 100%;
-      scroll-snap-align: start;
-      padding: 2.5rem;
-      background: var(--card);
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      margin-right: 1.5rem;
-      text-align: center;
-      border-left: 5px solid var(--accent);
-    }
-    .testimonial-card p {
-      font-style: italic;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-    .testimonial-card strong {
-      display: block;
-      margin-top: 1rem;
-      font-weight: 600;
-    }
-
-    /* Contact CTA Bar (Footer Stick) Added */
+    /* Contact CTA Bar (Footer Stick) */
     .cta-bar {
       position: fixed;
       bottom: 0;
@@ -192,6 +161,7 @@
       margin: 0;
       background: var(--accent);
       padding: 0.5rem 1rem;
+      margin-top: 0; /* Override default button margin */
     }
     .cta-bar a.btn:hover {
       background: #60a5fa;
@@ -203,7 +173,16 @@
     }
 
 
-    footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
+    footer { 
+      background: var(--card); 
+      color: var(--text); 
+      text-align:center; 
+      padding:2rem; 
+      font-size:0.9rem; 
+      border-top:1px solid rgba(0,0,0,0.1); 
+      /* Added space for the sticky CTA bar */
+      margin-bottom: 55px; 
+    }
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
@@ -216,14 +195,14 @@
     .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
     .stat:hover h3, .stat:focus h3 { color:white; }
 
-    #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
+    #topBtn { position: fixed; bottom:75px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
     #topBtn:hover, #topBtn:focus { transform: translateY(-2px); background: #2563eb; }
 
     /* Floating CV Button with Liquid Shimmer */
     .floating-cv {
-      bottom: 90px; /* Adjusted position to clear CTA bar */
+      position: fixed;
+      bottom: 130px; /* Adjusted position to clear CTA bar and top button */
       right: 20px;
-      background: var(--accent);
       color: white;
       font-weight: 600;
       padding: 0.7rem 1.1rem;
@@ -233,7 +212,6 @@
       overflow: hidden;
       transition: all 0.3s ease;
       z-index: 99;
-      position: fixed; 
       background: linear-gradient(45deg, var(--accent), #2563eb); 
     }
 
@@ -279,10 +257,11 @@
       overflow: auto;
       background-color: rgba(0, 0, 0, 0.9);
       padding: 20px;
+      transition: opacity 0.3s;
     }
     .modal-content {
       margin: 60px auto;
-      display: flex; /* Use flexbox for image and details */
+      display: flex;
       flex-direction: column;
       width: 90%;
       max-width: 1000px;
@@ -359,7 +338,6 @@
       .modal-body {
         flex-direction: column;
       }
-      .floating-cv { bottom: 120px; }
     }
 
     @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
@@ -380,7 +358,7 @@
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#testimonials">Reviews</a>     <a href="#certificates">Certificates</a>
+    <a href="#certificates">Certificates</a>
     <a href="#stats">Achievements</a>
     <a href="#contact">Contact</a>
     <button id="theme-toggle" aria-label="Toggle dark and light theme">🌙</button>
@@ -491,24 +469,6 @@
         </div>
       </div>
       <p class="contact-prompt">Click any project card to view the image, **Video Demo** (if available), and **Full Case Study**.</p>
-    </section>
-
-        <section id="testimonials">
-      <h2>⭐ Client Reviews</h2>
-      <div class="testimonial-grid">
-                <div class="testimonial-card">
-          <p>"Yasir transformed our jumbled data into an automated Excel dashboard. The clarity and time savings have been immediate. Highly recommended for any complex spreadsheet task."</p>
-          <strong>— Imran H., Logistics Manager</strong>
-        </div>
-                <div class="testimonial-card">
-          <p>"The MS Word report template he created is flawless. We finally have a consistent, professional look across all company documents. Excellent attention to detail."</p>
-          <strong>— Zoya M., Marketing Consultant</strong>
-        </div>
-                <div class="testimonial-card">
-          <p>"Our PowerPoint presentation went from boring slides to a compelling visual story. His design skills using only Office tools are genuinely impressive."</p>
-          <strong>— Fahad R., Business Analyst</strong>
-        </div>
-      </div>
     </section>
 
     <section id="certificates">
@@ -736,23 +696,26 @@
 
         projectCards.forEach(card => {
             card.addEventListener('click', () => {
+                // If the element has the necessary data attributes, populate the modal
                 const imgSrc = card.dataset.imgSrc;
-                const caption = card.dataset.caption;
-                const title = card.dataset.title;
-                const problem = card.dataset.problem;
-                const solution = card.dataset.solution;
-                const result = card.dataset.result;
+                const caption = card.dataset.caption || '';
+                const title = card.dataset.title || '';
+                const problem = card.dataset.problem || 'Details coming soon.';
+                const solution = card.dataset.solution || 'Details coming soon.';
+                const result = card.dataset.result || 'Details coming soon.';
 
-                modalTitle.textContent = title;
-                modalImage.src = imgSrc;
-                modalCaption.textContent = caption;
-                modalProblem.textContent = problem;
-                modalSolution.textContent = solution;
-                modalResult.textContent = result;
-                
-                modal.style.display = 'block';
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
+                if (imgSrc) {
+                    modalTitle.textContent = title;
+                    modalImage.src = imgSrc;
+                    modalCaption.textContent = caption;
+                    modalProblem.textContent = problem;
+                    modalSolution.textContent = solution;
+                    modalResult.textContent = result;
+                    
+                    modal.style.display = 'block';
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                }
             });
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
