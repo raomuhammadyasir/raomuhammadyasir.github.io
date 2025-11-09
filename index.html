@@ -26,10 +26,8 @@
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
 
-    /* Custom cursor */
     #cursor { position: fixed; top: 0; left: 0; width: var(--cursor-size); height: var(--cursor-size); background: var(--accent); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); transition: 0.1s ease; z-index:1000; mix-blend-mode: difference; }
 
-    /* Scroll progress bar */
     #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
 
     header { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
@@ -136,29 +134,39 @@
     <!-- Projects -->
     <section id="projects">
       <h2>📁 Featured Projects</h2>
+
+      <!-- Word Projects -->
+      <h3 style="text-align:center; margin-bottom:1rem;">Word Projects</h3>
       <div class="grid projects">
         <div class="card">
-          <a href="word1.png" target="_blank">
-            <img src="word1.png" alt="Word Project 1">
-          </a>
+          <a href="word1.png" target="_blank"><img src="word1.png" alt="Word Project 1"></a>
           <h3>Word Project 1</h3>
-          <p>Professional template designed for a Goods Transport Company.</p>
+          <p>Professional document design for a transport company.</p>
         </div>
-
         <div class="card">
-          <a href="word2.png" target="_blank">
-            <img src="word2.png" alt="Word Project 2">
-          </a>
+          <a href="word2.png" target="_blank"><img src="word2.png" alt="Word Project 2"></a>
           <h3>Word Project 2</h3>
-          <p>Professional template designed for a Goods Transport Company.</p>
+          <p>Letterhead and business form template.</p>
         </div>
-
         <div class="card">
-          <a href="word3.png" target="_blank">
-            <img src="word3.png" alt="Word Project 3">
-          </a>
+          <a href="word3.png" target="_blank"><img src="word3.png" alt="Word Project 3"></a>
           <h3>Word Project 3</h3>
-          <p>Professional template designed for a Goods Transport Company.</p>
+          <p>Contract and company report formatting.</p>
+        </div>
+      </div>
+
+      <!-- Excel Projects -->
+      <h3 style="text-align:center; margin:2rem 0 1rem;">Excel Projects</h3>
+      <div class="grid projects">
+        <div class="card">
+          <a href="excel1.png" target="_blank"><img src="excel1.png" alt="Excel Project 1"></a>
+          <h3>Excel Project 1</h3>
+          <p>Interactive Sales Dashboard with charts and KPIs.</p>
+        </div>
+        <div class="card">
+          <a href="excel2.png" target="_blank"><img src="excel2.png" alt="Excel Project 2"></a>
+          <h3>Excel Project 2</h3>
+          <p>Automated Employee Attendance Tracker with summary and % stats.</p>
         </div>
       </div>
     </section>
@@ -188,7 +196,7 @@
       </div>
     </section>
 
-    <!-- Contact & CV -->
+    <!-- Contact -->
     <section id="contact">
       <h2>📬 Contact & CV</h2>
       <form action="https://formspree.io/f/xeovjrgb" method="POST">
@@ -255,9 +263,5 @@
     },{threshold:0.5});
     counters.forEach(counter=>counterObserver.observe(counter));
   </script>
-
 </body>
 </html>
-
-
-
