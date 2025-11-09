@@ -25,6 +25,15 @@
     [data-theme="dark"] strong, [data-theme="dark"] b {
       color: var(--text); 
     }
+    /* FIX: Ensures link/accent colors look good in dark mode */
+    [data-theme="dark"] a {
+        color: var(--accent);
+    }
+    /* FIX: Ensures headers in dark mode look good */
+    [data-theme="dark"] h2 {
+        color: var(--accent);
+    }
+
 
     /* ⚙️ Global Styles & Reset */
     * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
@@ -36,18 +45,18 @@
 
     header { text-align: center; padding: 5rem 1rem 3rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
     
-    /* 🖼️ Profile Picture Style (Increased size) */
+    /* 🖼️ Profile Picture Style (Slightly larger and more stable) */
     .profile-pic {
-      width: 150px; /* Increased size */
-      height: 150px; /* Increased size */
-      border-radius: 50%; /* Makes it circular */
+      width: 150px; 
+      height: 150px; 
+      border-radius: 50%; 
       object-fit: cover;
       margin-bottom: 1.5rem;
-      border: 4px solid white; /* White border for emphasis */
-      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.3); /* Soft outer glow */
-      opacity: 0; /* Start hidden for fade-in */
+      border: 4px solid white; 
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.3); 
+      opacity: 0; 
       transform: translateY(-20px);
-      animation: fadeInPicture 1s ease-out 0.3s forwards; /* Animation added */
+      animation: fadeInPicture 1s ease-out 0.3s forwards; 
     }
 
     header h1 { font-size:2.8rem; margin-bottom:0.5rem; animation: fadeIn 1s ease-in-out; }
@@ -73,7 +82,7 @@
     @keyframes blink { 50% { opacity: 0; } }
     @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
     @keyframes fadeInPicture {
-      to { opacity: 1; transform: translateY(0); } /* Cool fade-in */
+      to { opacity: 1; transform: translateY(0); } 
     }
 
     nav { background: var(--card); text-align:center; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:50; }
@@ -93,36 +102,42 @@
     .section-text { text-align:center; max-width:850px; margin:auto; }
     .contact-prompt { text-align: center; margin-top: 1rem; opacity: 0.7; font-style: italic; font-size: 0.9rem; }
 
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); /* Adjusted minmax for larger images */ gap:1.5rem; }
+    /* FIX: Adjusted minmax for better layout on screens */
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem; }
 
     /* Card Hover Effect */
     .card { 
       background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); 
       padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; 
-      display: flex; flex-direction: column; /* Ensure content is stacked */
-      justify-content: space-between; /* Distribute space */
+      display: flex; flex-direction: column; 
+      justify-content: space-between; 
     }
     .project-card, .skill-card { cursor: pointer; }
     .card:hover, .card:focus-within { transform: translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
-    /* Ensure text/icons/images retain color or become white on hover */
-    .card:hover h3, .card:hover p, .card:hover img { color: white; filter: brightness(0) invert(1) !important; }
+    
+    /* FIX: Separate icon color for skill cards on hover */
+    .skill-card:hover img { filter: brightness(0) invert(1) !important; }
+    .card:hover h3, .card:hover p { color: white; }
+
     .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: filter 0.3s ease; } 
 
+    /* Project Image Styles (Large and Contained) */
     .project-card img { 
       width:100%; 
-      height: auto; /* Allow height to adjust naturally */
-      max-height: 280px; /* Increased max-height for A4-like display */
-      object-fit: contain; /* Changed to 'contain' to show full image without cropping */
-      background-color: #f0f0f0; /* Light background for images with transparency */
+      height: auto; 
+      max-height: 280px; 
+      object-fit: contain; /* Shows full image, no cropping */
+      background-color: var(--bg); /* Use theme background for stability */
       border-radius:10px; 
       margin-bottom:0.8rem; 
-      padding: 10px; /* Add some padding around the image */
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* Subtle inner shadow */
+      padding: 15px; /* Increased padding */
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1); 
     }
+    /* FIX: Prevent project images from inverting/changing color on hover */
     .project-card:hover img {
-      filter: none !important; /* Prevent image from inverting on hover */
+      filter: none !important; 
+      background-color: white; /* Ensure image background stays light on dark card hover */
     }
-    .project-card:hover h3, .project-card:hover p { color: white; }
 
     .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; border:none; }
     .btn:hover { background:#2563eb; transform: translateY(-2px); }
@@ -190,7 +205,7 @@
     @media only screen and (max-width: 700px){
       .modal-content { width: 90%; }
       header h1 { font-size: 2.2rem; }
-      .profile-pic { width: 120px; height: 120px; } /* Adjust profile pic size for smaller screens */
+      .profile-pic { width: 120px; height: 120px; } 
     }
   </style>
 </head>
@@ -285,6 +300,7 @@
           <h3>Employee Tracker</h3>
           <p>Automated attendance sheet with conditional formatting and total count functions.</p>
         </div>
+        <div class="card project-card" style="opacity: 0; pointer-events: none; visibility: hidden;"></div> 
       </div>
       <p class="contact-prompt">Click or use Enter/Space on any project card to view the image in detail.</p>
     </section>
@@ -300,6 +316,7 @@
           <h3>Data Management & Reporting</h3>
           <p>Completed training focused on structured data entry, analysis, and reporting accuracy.</p>
         </div>
+        <div class="card cert-card" style="opacity: 0; pointer-events: none; visibility: hidden;"></div>
       </div>
     </section>
 
