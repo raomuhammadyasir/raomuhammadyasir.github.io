@@ -53,9 +53,8 @@
     .card { background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
     .card:hover { transform: translateY(-5px) scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
 
-    .card img { width:65px; margin-bottom:1rem; transition: transform 0.3s ease; }
-    .projects img { width:100%; border-radius:10px; margin-bottom:0.8rem; transition: transform 0.3s ease; }
-    .projects img:hover { transform: scale(1.05); }
+    .card img { width:100%; border-radius:10px; margin-bottom:0.8rem; transition: transform 0.3s ease; }
+    .card img:hover { transform: scale(1.05); }
 
     .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; }
     .btn:hover { background:#2563eb; transform: translateY(-2px); }
@@ -140,19 +139,27 @@
       <div class="grid projects">
         <!-- Word Project 1 -->
         <div class="card">
-          <img src="assets/images/word1.png" alt="Word Project 1">
+          <a href="assets/images/word1.png" target="_blank">
+            <img src="assets/images/word1.png" alt="Word Project 1">
+          </a>
           <h3>Word Project 1</h3>
           <p>Professional resume template designed in Word.</p>
         </div>
+
         <!-- Word Project 2 -->
         <div class="card">
-          <img src="assets/images/word2.png" alt="Word Project 2">
+          <a href="assets/images/word2.png" target="_blank">
+            <img src="assets/images/word2.png" alt="Word Project 2">
+          </a>
           <h3>Word Project 2</h3>
           <p>Formal report template designed in Word.</p>
         </div>
+
         <!-- Word Project 3 -->
         <div class="card">
-          <img src="assets/images/word3.png" alt="Word Project 3">
+          <a href="assets/images/word3.png" target="_blank">
+            <img src="assets/images/word3.png" alt="Word Project 3">
+          </a>
           <h3>Word Project 3</h3>
           <p>Invoice template designed in Word with clean layout.</p>
         </div>
@@ -186,7 +193,7 @@
 
     <!-- Contact / CV -->
     <section id="contact">
-      <h2>📬 Contact & Newsletter</h2>
+      <h2>📬 Contact & CV</h2>
       <form action="https://formspree.io/f/xeovjrgb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
@@ -209,7 +216,7 @@
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
 
-    // Theme toggle with memory
+    // Theme toggle
     const toggle = document.getElementById('theme-toggle');
     if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
     toggle.addEventListener('click',()=>{ 
@@ -217,16 +224,16 @@
       else { document.body.dataset.theme='dark'; toggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
     });
 
-    // Section fade-in
+    // Fade-in sections
     const sections=document.querySelectorAll('section');
     const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });},{threshold:0.1});
     sections.forEach(section=>observer.observe(section));
 
-    // Scroll progress bar
+    // Scroll bar
     const scrollBar=document.getElementById('scrollBar');
     window.addEventListener('scroll',()=>{ const scrollTop=document.documentElement.scrollTop; const scrollHeight=document.documentElement.scrollHeight-window.innerHeight; scrollBar.style.width=(scrollTop/scrollHeight*100)+"%"; });
 
-    // Back to top button
+    // Back to top
     const topBtn=document.getElementById('topBtn');
     window.addEventListener('scroll',()=>{ topBtn.style.display=window.scrollY>300?'block':'none'; });
     topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
