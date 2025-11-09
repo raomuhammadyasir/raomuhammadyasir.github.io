@@ -36,10 +36,10 @@
 
     header { text-align: center; padding: 5rem 1rem 3rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color:white; }
     
-    /* 🖼️ Profile Picture Style */
+    /* 🖼️ Profile Picture Style (Increased size) */
     .profile-pic {
-      width: 120px;
-      height: 120px;
+      width: 150px; /* Increased size */
+      height: 150px; /* Increased size */
       border-radius: 50%; /* Makes it circular */
       object-fit: cover;
       margin-bottom: 1.5rem;
@@ -93,17 +93,35 @@
     .section-text { text-align:center; max-width:850px; margin:auto; }
     .contact-prompt { text-align: center; margin-top: 1rem; opacity: 0.7; font-style: italic; font-size: 0.9rem; }
 
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); /* Adjusted minmax for larger images */ gap:1.5rem; }
 
     /* Card Hover Effect */
-    .card { background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
+    .card { 
+      background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); 
+      padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; 
+      display: flex; flex-direction: column; /* Ensure content is stacked */
+      justify-content: space-between; /* Distribute space */
+    }
     .project-card, .skill-card { cursor: pointer; }
     .card:hover, .card:focus-within { transform: translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
     /* Ensure text/icons/images retain color or become white on hover */
     .card:hover h3, .card:hover p, .card:hover img { color: white; filter: brightness(0) invert(1) !important; }
     .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: filter 0.3s ease; } 
 
-    .project-card img { width:100%; height:auto; max-height: 200px; object-fit: cover; border-radius:10px; margin-bottom:0.8rem; }
+    .project-card img { 
+      width:100%; 
+      height: auto; /* Allow height to adjust naturally */
+      max-height: 280px; /* Increased max-height for A4-like display */
+      object-fit: contain; /* Changed to 'contain' to show full image without cropping */
+      background-color: #f0f0f0; /* Light background for images with transparency */
+      border-radius:10px; 
+      margin-bottom:0.8rem; 
+      padding: 10px; /* Add some padding around the image */
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* Subtle inner shadow */
+    }
+    .project-card:hover img {
+      filter: none !important; /* Prevent image from inverting on hover */
+    }
     .project-card:hover h3, .project-card:hover p { color: white; }
 
     .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; border:none; }
@@ -172,6 +190,7 @@
     @media only screen and (max-width: 700px){
       .modal-content { width: 90%; }
       header h1 { font-size: 2.2rem; }
+      .profile-pic { width: 120px; height: 120px; } /* Adjust profile pic size for smaller screens */
     }
   </style>
 </head>
@@ -237,18 +256,18 @@
 
       <h3 class="subsection-title">MS Word Projects</h3>
       <div class="grid projects-grid">
-        <div class="card project-card" tabindex="0" data-img-src="word1.png" data-caption="Professional company document template (Word)">
-          <img src="word1.png" alt="Preview of Professional company document template">
+        <div class="card project-card" tabindex="0" data-img-src="word1.png" data-caption="Professional transport company flyer design (Word)">
+          <img src="word1.png" alt="Professional transport company flyer design">
           <h3>Template Design</h3>
           <p>Professional Transport Company Flyer Design</p>
         </div>
         <div class="card project-card" tabindex="0" data-img-src="word2.png" data-caption="Structured report layout for business use (Word)">
-          <img src="word2.png" alt="Preview of Structured report layout">
+          <img src="word2.png" alt="Structured report layout">
           <h3>Flyer Design</h3>
           <p>High-Quality Flyer Design Tailored for Transport Companies</p>
         </div>
         <div class="card project-card" tabindex="0" data-img-src="word3.png" data-caption="Modern template for professional proposals (Word)">
-          <img src="word3.png" alt="Preview of Modern template for professional proposals">
+          <img src="word3.png" alt="Modern template for professional proposals">
           <h3>Proposal Layout</h3>
           <p>Eye-Catching Flyer Designs for Your Transport Business</p>
         </div>
@@ -257,12 +276,12 @@
       <h3 class="subsection-title">MS Excel Projects</h3>
       <div class="grid projects-grid">
         <div class="card project-card" tabindex="0" data-img-src="excel1.png" data-caption="Interactive dashboard with auto-calculated sales insights (Excel)">
-          <img src="excel1.png" alt="Preview of Business Sales Dashboard">
+          <img src="excel1.png" alt="Business Sales Dashboard">
           <h3>Business Sales Dashboard</h3>
           <p>Interactive dashboard with auto-calculated sales insights and dynamic charts.</p>
         </div>
         <div class="card project-card" tabindex="0" data-img-src="excel2.png" data-caption="Automated attendance sheet with total present/absent count (Excel)">
-          <img src="excel2.png" alt="Preview of Employee Attendance Tracker">
+          <img src="excel2.png" alt="Employee Attendance Tracker">
           <h3>Employee Tracker</h3>
           <p>Automated attendance sheet with conditional formatting and total count functions.</p>
         </div>
