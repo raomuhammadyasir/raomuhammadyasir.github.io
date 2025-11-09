@@ -71,10 +71,11 @@
     .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
     .skill-fill { height:100%; background: var(--accent); width:0%; border-radius:8px; transition: width 1.5s ease-in-out; }
 
-    .testimonial-container { position: relative; overflow:hidden; }
+    .testimonial-container { position: relative; overflow:hidden; margin-top:2rem; }
     .testimonial-track { display:flex; transition: transform 0.5s ease-in-out; }
-    .testimonial-card { flex:0 0 100%; padding:1rem; }
-    .testimonial-card p { font-style:italic; }
+    .testimonial-card { flex:0 0 100%; padding:1rem; background: var(--card); border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.08); }
+    .testimonial-card p { font-style:italic; margin-bottom:0.5rem; }
+    .testimonial-card h4 { text-align:right; font-weight:600; }
 
     .testimonial-nav { text-align:center; margin-top:1rem; }
     .testimonial-nav button { background: var(--accent); color:white; border:none; border-radius:50%; width:25px; height:25px; margin:0 5px; cursor:pointer; }
@@ -87,6 +88,7 @@
     input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; }
     input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
     button[type="submit"] { cursor:pointer; }
+
     form { display:flex; flex-direction:column; gap:0.8rem; max-width:500px; margin:auto; }
 
     /* Floating Social Icons */
@@ -95,6 +97,7 @@
     .social-fixed a:hover { transform: scale(1.2); }
 
     @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
+    @keyframes blink { 0%,50%,100%{border-color:white;} 25%,75%{border-color:transparent;} }
   </style>
 </head>
 <body>
@@ -138,7 +141,7 @@
       </p>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills Section -->
     <section id="skills">
       <h2>🧠 Core Skills</h2>
       <div class="grid">
@@ -163,9 +166,99 @@
       </div>
     </section>
 
-    <!-- Projects, Certificates, Testimonials, Stats, Contact -->
-    <!-- Keep previous structure from earlier code but lazy load images and animate sections -->
-    <!-- ... -->
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>📁 Featured Projects</h2>
+      <div class="grid projects">
+        <div class="card">
+          <img src="https://i.imgur.com/CQb1Rml.png" alt="Excel Project" loading="lazy">
+          <h3>Excel Inventory System</h3>
+          <p>Automated records using formulas and data validation.</p>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/Tp3Se1h.png" alt="Word Template" loading="lazy">
+          <h3>Resume Template Design</h3>
+          <p>Elegant Word resume templates for professionals.</p>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/XOSkAiL.png" alt="PowerPoint" loading="lazy">
+          <h3>NGO Awareness Presentation</h3>
+          <p>Visual storytelling with slides and animations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+      <h2>🏅 Certificates</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Microsoft Office (STICS Rawalpindi)</h3>
+          <p>Trained and verified in Word, Excel, PowerPoint.</p>
+        </div>
+        <div class="card">
+          <h3>Data Management</h3>
+          <p>Understanding structured data entry and reporting accuracy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <h2>💬 Testimonials</h2>
+      <div class="testimonial-container">
+        <div class="testimonial-track">
+          <div class="testimonial-card">
+            <p>"Yasir’s Excel templates saved our team hours every week."</p>
+            <h4>- Client A</h4>
+          </div>
+          <div class="testimonial-card">
+            <p>"Professional, accurate, and visually impressive Word templates."</p>
+            <h4>- Client B</h4>
+          </div>
+          <div class="testimonial-card">
+            <p>"PowerPoint presentations were clean, dynamic, and easy to present."</p>
+            <h4>- Client C</h4>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-nav">
+        <button data-index="0"></button>
+        <button data-index="1"></button>
+        <button data-index="2"></button>
+      </div>
+    </section>
+
+    <!-- Achievements / Stats Section -->
+    <section id="stats">
+      <h2>🏆 Achievements</h2>
+      <div class="grid">
+        <div class="card stat">
+          <h3>50+</h3>
+          <p>Projects Completed</p>
+        </div>
+        <div class="card stat">
+          <h3>100%</h3>
+          <p>Client Satisfaction</p>
+        </div>
+        <div class="card stat">
+          <h3>3</h3>
+          <p>Years Experience</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>📬 Contact Me</h2>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <p id="formMessage" style="text-align:center;margin-top:0.5rem;"></p>
+    </section>
 
   </main>
 
@@ -222,6 +315,23 @@
       entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.width=entry.target.dataset.fill; skillObserver.unobserve(entry.target); } });
     },{threshold:0.5});
     skillFills.forEach(fill=>skillObserver.observe(fill));
+
+    // Testimonials slider
+    const track=document.querySelector('.testimonial-track');
+    const navBtns=document.querySelectorAll('.testimonial-nav button');
+    navBtns.forEach(btn=>{
+      btn.addEventListener('click',()=>{ track.style.transform=`translateX(-${btn.dataset.index*100}%)`; });
+    });
+
+    // Contact form simulation
+    const form=document.getElementById('contactForm');
+    const formMsg=document.getElementById('formMessage');
+    form.addEventListener('submit',e=>{
+      e.preventDefault();
+      formMsg.textContent="Message sent! Thank you.";
+      form.reset();
+      setTimeout(()=>formMsg.textContent="",3000);
+    });
   </script>
 
 </body>
