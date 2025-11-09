@@ -4,14 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rao Muhammad Yasir | MS Office Expert</title>
-  <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Professional portfolio showcasing Word, Excel, and PowerPoint projects.">
-  <meta name="keywords" content="MS Office, Microsoft Word, Excel, PowerPoint, Portfolio, Resume, Data Entry, Dashboard, Templates">
-  <meta name="author" content="Rao Muhammad Yasir">
-  <meta property="og:title" content="Rao Muhammad Yasir | MS Office Expert">
-  <meta property="og:description" content="Professional portfolio showcasing Word, Excel, and PowerPoint projects.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://your-image-link.com/portfolio.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Word, Excel, PowerPoint professional portfolio.">
   <style>
     :root {
       --bg: #f4f6f9;
@@ -19,7 +13,6 @@
       --card: #fff;
       --accent: #3b82f6;
       --scroll-bg: #d1d5db;
-      --cursor-size: 20px;
     }
     [data-theme="dark"] {
       --bg: #0f172a;
@@ -28,12 +21,10 @@
       --accent: #60a5fa;
       --scroll-bg: #1e293b;
     }
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; cursor:none; }
+    /* Removed custom cursor setup */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.4s ease; }
-
-    /* Custom cursor */
-    #cursor { position: fixed; top: 0; left: 0; width: var(--cursor-size); height: var(--cursor-size); background: var(--accent); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); transition: 0.1s ease; z-index:1000; mix-blend-mode: difference; }
 
     /* Scroll progress bar */
     #scrollBar { position: fixed; top:0; left:0; height:4px; background: var(--accent); width:0%; z-index:100; transition: width 0.2s ease; }
@@ -43,40 +34,52 @@
     header p { font-size:1.2rem; opacity:0.9; animation: fadeIn 2s ease-in-out; }
 
     nav { background: var(--card); text-align:center; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:50; }
-    nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; }
+    nav a { color: var(--text); text-decoration:none; margin:0 1rem; font-weight:500; transition:0.3s; padding: 0.5rem 0; }
     nav a:hover { color: var(--accent); text-decoration: underline; }
+
     #theme-toggle { background: var(--accent); color:white; border:none; border-radius:8px; padding:0.4rem 0.8rem; cursor:pointer; font-weight:500; margin-left:1rem; transition:0.3s; }
     #theme-toggle:hover { opacity:0.8; }
+    #theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
     main { max-width: 1100px; margin:auto; }
     section { padding: 3rem 1.5rem; opacity:0; transform: translateY(20px); transition: all 0.6s ease; }
     section.visible { opacity:1; transform: translateY(0); }
 
     h2 { text-align:center; font-size:1.9rem; margin-bottom:1.8rem; color: var(--accent); }
+    .subsection-title { text-align:center; color:var(--text); margin:2rem 0 1rem; font-size: 1.5rem; }
+    .section-text { text-align:center; max-width:850px; margin:auto; }
+    .contact-prompt { text-align: center; margin-top: 1rem; opacity: 0.7; font-style: italic; font-size: 0.9rem; }
 
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
 
     .card { background: var(--card); border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
-    .card:hover { transform: translateY(-5px) scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
+    .project-card, .skill-card { cursor: pointer; }
+    /* Added focus state for better keyboard navigation */
+    .card:hover, .card:focus-within { transform: translateY(-5px) scale(1.03); box-shadow:0 8px 25px rgba(0,0,0,0.15); background: var(--accent); color:white; }
 
-    .card img { width:100%; border-radius:10px; margin-bottom:0.8rem; transition: transform 0.3s ease; }
-    .card img:hover { transform: scale(1.05); }
+    .card img { width:80px; height:80px; object-fit: contain; margin-bottom:0.8rem; transition: transform 0.3s ease; }
 
-    .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; }
+    .project-card img { width:100%; height:auto; border-radius:10px; margin-bottom:0.8rem; }
+    .project-card:hover h3, .project-card:hover p { color: white; } /* Ensures text stays white on hover */
+
+    .btn { display:inline-block; background: var(--accent); color:white; padding:0.8rem 1.4rem; border-radius:8px; margin-top:1rem; text-decoration:none; transition:0.3s; border:none; }
     .btn:hover { background:#2563eb; transform: translateY(-2px); }
 
     footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
-    footer a { color: var(--accent); text-decoration:none; }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
     .skill { margin: 1rem 0; }
     .skill-name { font-weight:500; margin-bottom:0.3rem; }
     .skill-bar { background: var(--scroll-bg); border-radius: 8px; overflow:hidden; height:15px; }
     .skill-fill { height:100%; background: var(--accent); width:0%; border-radius:8px; transition: width 1.5s ease-in-out; }
+    .skill-card:hover .skill-fill { background: white; } /* Adjust fill color on hover */
 
     .stat h3 { font-size:2rem; color: var(--accent); margin-bottom:0.5rem; }
+    .stat:hover h3, .stat:focus h3 { color:white; }
 
     #topBtn { position: fixed; bottom:20px; right:20px; display:none; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition:0.3s; z-index:98; }
-    #topBtn:hover { transform: translateY(-2px); }
+    #topBtn:hover, #topBtn:focus { transform: translateY(-2px); background: #2563eb; }
 
     /* Floating CV Button */
     .floating-cv {
@@ -93,19 +96,83 @@
       transition: all 0.3s ease;
       z-index: 99;
     }
-    .floating-cv:hover { transform: translateY(-3px); background: #2563eb; }
+    .floating-cv:hover, .floating-cv:focus {
+      transform: translateY(-3px);
+      background: #2563eb;
+    }
 
-    input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; }
+    input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; background: var(--card); color: var(--text); }
     input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
     button[type="submit"] { cursor:pointer; }
     form { display:flex; flex-direction:column; gap:0.8rem; max-width:500px; margin:auto; }
+
+    /* --- Modal (Lightbox) Styles --- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding-top: 60px;
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 900px;
+      background: var(--card);
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+    }
+    #modalImage {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      transition: opacity 0.3s;
+    }
+    #modalCaption {
+      margin-top: 10px;
+      text-align: center;
+      color: var(--text);
+      font-size: 1.1rem;
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: var(--text);
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      background: var(--card);
+      border-radius: 50%;
+      padding: 0 12px;
+      line-height: 1;
+    }
+    .close-btn:hover, .close-btn:focus {
+      color: var(--accent);
+      text-decoration: none;
+      transform: scale(1.1);
+    }
+
+    @media only screen and (max-width: 700px){
+      .modal-content {
+        width: 90%;
+      }
+    }
 
     @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform:translateY(0); } }
   </style>
 </head>
 <body>
 
-  <div id="cursor"></div>
   <div id="scrollBar"></div>
 
   <header>
@@ -120,36 +187,34 @@
     <a href="#certificates">Certificates</a>
     <a href="#stats">Achievements</a>
     <a href="#contact">Contact</a>
-    <button id="theme-toggle">🌙</button>
+    <button id="theme-toggle" aria-label="Toggle dark and light theme">🌙</button>
   </nav>
 
   <main>
-    <!-- About -->
     <section id="about">
       <h2>💡 About Me</h2>
-      <p style="text-align:center; max-width:850px; margin:auto;">
-        I’m <strong>Rao Muhammad Yasir</strong>, a Microsoft Office Specialist who helps professionals work efficiently with Word, Excel, and PowerPoint by combining <b>accuracy</b>, <b>clarity</b>, and <b>visual appeal</b>.
+      <p class="section-text">
+        I am **Rao Muhammad Yasir**, a dedicated Microsoft Office Expert. I empower professionals and businesses to achieve peak efficiency by creating **visually compelling** and **functionally flawless** documents, spreadsheets, and presentations using my mastery of **Word, Excel, and PowerPoint**.
       </p>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
       <h2>🧠 Core Skills</h2>
       <div class="grid">
-        <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word Icon" loading="lazy">
+        <div class="card skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word logo icon">
           <h3>MS Word</h3>
           <p>Formatting, reports, templates, mail merges.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="95%"></div></div></div>
         </div>
-        <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel Icon" loading="lazy">
+        <div class="card skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel logo icon">
           <h3>MS Excel</h3>
           <p>Data entry, analysis, formulas, dashboards.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div></div>
         </div>
-        <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint Icon" loading="lazy">
+        <div class="card skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint logo icon">
           <h3>MS PowerPoint</h3>
           <p>Presentation design, storytelling, visuals.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div></div>
@@ -157,69 +222,58 @@
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
       <h2>📁 Featured Projects</h2>
-      <h3 style="text-align:center; color:var(--text); margin-bottom:1rem;">MS Word Projects</h3>
-      <div class="grid projects">
-        <div class="card">
-          <a href="word1.png" target="_blank">
-            <img src="word1.png" alt="Word Project 1" loading="lazy">
-          </a>
+
+      <h3 class="subsection-title">MS Word Projects</h3>
+      <div class="grid projects-grid">
+        <div class="card project-card" data-img-src="word1.png" data-caption="Professional company document template (Word)">
+          <img src="word1.png" alt="Preview of Professional company document template">
           <h3>Word Project 1</h3>
           <p>Professional company document template.</p>
         </div>
-        <div class="card">
-          <a href="word2.png" target="_blank">
-            <img src="word2.png" alt="Word Project 2" loading="lazy">
-          </a>
+        <div class="card project-card" data-img-src="word2.png" data-caption="Structured report layout for business use (Word)">
+          <img src="word2.png" alt="Preview of Structured report layout">
           <h3>Word Project 2</h3>
           <p>Structured report layout for business use.</p>
         </div>
-        <div class="card">
-          <a href="word3.png" target="_blank">
-            <img src="word3.png" alt="Word Project 3" loading="lazy">
-          </a>
+        <div class="card project-card" data-img-src="word3.png" data-caption="Modern template for professional proposals (Word)">
+          <img src="word3.png" alt="Preview of Modern template for professional proposals">
           <h3>Word Project 3</h3>
           <p>Modern template for professional proposals.</p>
         </div>
       </div>
 
-      <h3 style="text-align:center; color:var(--text); margin:2rem 0 1rem;">MS Excel Projects</h3>
-      <div class="grid projects">
-        <div class="card">
-          <a href="excel1.png" target="_blank">
-            <img src="excel1.png" alt="Excel Project 1" loading="lazy">
-          </a>
+      <h3 class="subsection-title">MS Excel Projects</h3>
+      <div class="grid projects-grid">
+        <div class="card project-card" data-img-src="excel1.png" data-caption="Interactive dashboard with auto-calculated sales insights (Excel)">
+          <img src="excel1.png" alt="Preview of Business Sales Dashboard">
           <h3>Business Sales Dashboard</h3>
           <p>Interactive dashboard with auto-calculated sales insights.</p>
         </div>
-        <div class="card">
-          <a href="excel2.png" target="_blank">
-            <img src="excel2.png" alt="Excel Project 2" loading="lazy">
-          </a>
+        <div class="card project-card" data-img-src="excel2.png" data-caption="Automated attendance sheet with total present/absent count (Excel)">
+          <img src="excel2.png" alt="Preview of Employee Attendance Tracker">
           <h3>Employee Attendance Tracker</h3>
           <p>Automated attendance sheet with total present/absent count.</p>
         </div>
       </div>
+      <p class="contact-prompt">Click any project card to view the image in detail.</p>
     </section>
 
-    <!-- Certificates -->
     <section id="certificates">
       <h2>🏅 Certificates</h2>
       <div class="grid">
-        <div class="card">
+        <div class="card cert-card">
           <h3>Microsoft Office (STICS Rawalpindi)</h3>
           <p>Trained and verified in Word, Excel, PowerPoint.</p>
         </div>
-        <div class="card">
+        <div class="card cert-card">
           <h3>Data Management</h3>
           <p>Understanding structured data entry and reporting accuracy.</p>
         </div>
       </div>
     </section>
 
-    <!-- Achievements -->
     <section id="stats">
       <h2>📊 Achievements</h2>
       <div class="grid">
@@ -229,9 +283,9 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <h2>📬 Contact Me</h2>
+      <p class="section-text" style="margin-bottom: 1rem;">*Your message will be sent securely via Formspree.*</p>
       <form action="https://formspree.io/f/xeovjrgb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
@@ -244,93 +298,152 @@
   <a href="YASIR_CV.pdf" class="floating-cv" download>📄 CV</a>
 
   <footer>
-    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com" target="_blank">GitHub Pages</a> | 
-    <a href="https://www.linkedin.com/in/raomuhammadyasir" target="_blank">LinkedIn</a>
+    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com/YourUsername/YourRepoName" target="_blank">GitHub Pages</a>
   </footer>
 
-  <button id="topBtn">⬆</button>
+  <button id="topBtn" aria-label="Scroll back to top">⬆</button>
+
+  <div id="projectModal" class="modal" aria-modal="true" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close-btn" aria-label="Close image viewer">&times;</span>
+      <img id="modalImage" src="" alt="Project Image Detail">
+      <p id="modalCaption"></p>
+    </div>
+  </div>
 
   <script>
-    // Custom cursor
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Theme Toggle Logic
+        const toggle = document.getElementById('theme-toggle');
+        const storedTheme = localStorage.getItem('theme');
 
-    // Theme toggle
-    const toggle = document.getElementById('theme-toggle');
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.dataset.theme = 'dark';
-      toggle.textContent = '☀️';
-    }
-    toggle.addEventListener('click', () => {
-      if (document.body.dataset.theme === 'dark') {
-        document.body.dataset.theme = '';
-        toggle.textContent = '🌙';
-        localStorage.setItem('theme', '');
-      } else {
-        document.body.dataset.theme = 'dark';
-        toggle.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-      }
-    });
-
-    // Sections fade-in
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    sections.forEach(section => observer.observe(section));
-
-    // Scroll progress
-    const scrollBar = document.getElementById('scrollBar');
-    window.addEventListener('scroll', () => {
-      const scrollTop = document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      scrollBar.style.width = (scrollTop / scrollHeight * 100) + "%";
-    });
-
-    // Back to top button
-    const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
-    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Skill bar animation
-    const skillFills = document.querySelectorAll('.skill-fill');
-    const skillObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.style.width = entry.target.dataset.fill; skillObserver.unobserve(entry.target); }
-      });
-    }, { threshold: 0.5 });
-    skillFills.forEach(fill => skillObserver.observe(fill));
-
-    // Counter animation
-    const counters = document.querySelectorAll('.stat h3');
-    const counterObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const updateCount = (el) => {
-            const target = parseInt(el.dataset.target);
-            let count = parseInt(el.innerText);
-            const increment = Math.ceil(target / 100);
-            if (count < target) { el.innerText = count + increment; setTimeout(() => updateCount(el), 20); } else el.innerText = target;
-          }
-          updateCount(entry.target);
-          counterObserver.unobserve(entry.target);
+        if (storedTheme === 'dark') {
+            document.body.dataset.theme = 'dark';
+            toggle.textContent = '☀️';
         }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(counter => counterObserver.observe(counter));
 
-    // Smooth scrolling for nav links
-    document.querySelectorAll('nav a').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
+        toggle.addEventListener('click', () => {
+            if (document.body.dataset.theme === 'dark') {
+                document.body.dataset.theme = '';
+                toggle.textContent = '🌙';
+                localStorage.setItem('theme', '');
+            } else {
+                document.body.dataset.theme = 'dark';
+                toggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // 2. Section Visibility Observer
+        const sections = document.querySelectorAll('section');
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => sectionObserver.observe(section));
+
+        // 3. Scroll Progress Bar
+        const scrollBar = document.getElementById('scrollBar');
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollBar.style.width = (scrollTop / scrollHeight * 100) + "%";
+        });
+
+        // 4. Back-to-Top Button
+        const topBtn = document.getElementById('topBtn');
+        window.addEventListener('scroll', () => {
+            topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+        topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // 5. Skill Bar Animation
+        const skillFills = document.querySelectorAll('.skill-fill');
+        const skillObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.dataset.fill;
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        skillFills.forEach(fill => skillObserver.observe(fill));
+
+        // 6. Counter Animation
+        const counters = document.querySelectorAll('.stat h3');
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const updateCount = (el) => {
+                        const target = parseInt(el.dataset.target);
+                        let count = parseInt(el.innerText);
+                        const increment = Math.ceil(target / 100);
+                        if (count < target) {
+                            el.innerText = count + increment;
+                            setTimeout(() => updateCount(el), 20);
+                        } else {
+                            el.innerText = target;
+                        }
+                    }
+                    updateCount(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(counter => counterObserver.observe(counter));
+
+
+        // 7. Project Modal (Lightbox) Logic
+        const modal = document.getElementById('projectModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeBtn = document.querySelector('.close-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const imgSrc = card.dataset.imgSrc;
+                const caption = card.dataset.caption;
+
+                modalImage.src = imgSrc;
+                modalCaption.textContent = caption;
+                modal.style.display = 'block';
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling background
+            });
+            // Add keyboard support for focus/enter key
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+
+        // Close when clicking outside the modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close with the Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
     });
   </script>
 </body>
