@@ -4,8 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rao Muhammad Yasir | MS Office Expert</title>
+  <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Professional portfolio showcasing Word, Excel, and PowerPoint projects.">
+  <meta name="keywords" content="MS Office, Microsoft Word, Excel, PowerPoint, Portfolio, Resume, Data Entry, Dashboard, Templates">
+  <meta name="author" content="Rao Muhammad Yasir">
+  <meta property="og:title" content="Rao Muhammad Yasir | MS Office Expert">
+  <meta property="og:description" content="Professional portfolio showcasing Word, Excel, and PowerPoint projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://your-image-link.com/portfolio.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <meta name="description" content="Rao Muhammad Yasir - Microsoft Office Expert. Word, Excel, PowerPoint professional portfolio.">
   <style>
     :root {
       --bg: #f4f6f9;
@@ -60,6 +66,7 @@
     .btn:hover { background:#2563eb; transform: translateY(-2px); }
 
     footer { background: var(--card); color: var(--text); text-align:center; padding:2rem; font-size:0.9rem; border-top:1px solid rgba(0,0,0,0.1); }
+    footer a { color: var(--accent); text-decoration:none; }
 
     .skill { margin: 1rem 0; }
     .skill-name { font-weight:500; margin-bottom:0.3rem; }
@@ -86,10 +93,7 @@
       transition: all 0.3s ease;
       z-index: 99;
     }
-    .floating-cv:hover {
-      transform: translateY(-3px);
-      background: #2563eb;
-    }
+    .floating-cv:hover { transform: translateY(-3px); background: #2563eb; }
 
     input, textarea { border-radius:6px; border:1px solid #ccc; padding:0.6rem; width:100%; transition: all 0.3s ease; }
     input:focus, textarea:focus { border-color: var(--accent); outline:none; box-shadow:0 0 5px var(--accent); }
@@ -133,19 +137,19 @@
       <h2>🧠 Core Skills</h2>
       <div class="grid">
         <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="MS Word Icon" loading="lazy">
           <h3>MS Word</h3>
           <p>Formatting, reports, templates, mail merges.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="95%"></div></div></div>
         </div>
         <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="MS Excel Icon" loading="lazy">
           <h3>MS Excel</h3>
           <p>Data entry, analysis, formulas, dashboards.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="90%"></div></div></div>
         </div>
         <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="MS PowerPoint Icon" loading="lazy">
           <h3>MS PowerPoint</h3>
           <p>Presentation design, storytelling, visuals.</p>
           <div class="skill"><div class="skill-name">Proficiency</div><div class="skill-bar"><div class="skill-fill" data-fill="85%"></div></div></div>
@@ -156,26 +160,25 @@
     <!-- Projects -->
     <section id="projects">
       <h2>📁 Featured Projects</h2>
-
       <h3 style="text-align:center; color:var(--text); margin-bottom:1rem;">MS Word Projects</h3>
       <div class="grid projects">
         <div class="card">
           <a href="word1.png" target="_blank">
-            <img src="word1.png" alt="Word Project 1">
+            <img src="word1.png" alt="Word Project 1" loading="lazy">
           </a>
           <h3>Word Project 1</h3>
           <p>Professional company document template.</p>
         </div>
         <div class="card">
           <a href="word2.png" target="_blank">
-            <img src="word2.png" alt="Word Project 2">
+            <img src="word2.png" alt="Word Project 2" loading="lazy">
           </a>
           <h3>Word Project 2</h3>
           <p>Structured report layout for business use.</p>
         </div>
         <div class="card">
           <a href="word3.png" target="_blank">
-            <img src="word3.png" alt="Word Project 3">
+            <img src="word3.png" alt="Word Project 3" loading="lazy">
           </a>
           <h3>Word Project 3</h3>
           <p>Modern template for professional proposals.</p>
@@ -186,14 +189,14 @@
       <div class="grid projects">
         <div class="card">
           <a href="excel1.png" target="_blank">
-            <img src="excel1.png" alt="Excel Project 1">
+            <img src="excel1.png" alt="Excel Project 1" loading="lazy">
           </a>
           <h3>Business Sales Dashboard</h3>
           <p>Interactive dashboard with auto-calculated sales insights.</p>
         </div>
         <div class="card">
           <a href="excel2.png" target="_blank">
-            <img src="excel2.png" alt="Excel Project 2">
+            <img src="excel2.png" alt="Excel Project 2" loading="lazy">
           </a>
           <h3>Employee Attendance Tracker</h3>
           <p>Automated attendance sheet with total present/absent count.</p>
@@ -241,65 +244,94 @@
   <a href="YASIR_CV.pdf" class="floating-cv" download>📄 CV</a>
 
   <footer>
-    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com" target="_blank">GitHub Pages</a>
+    © 2025 Rao Muhammad Yasir — Built with 💙 on <a href="https://github.com" target="_blank">GitHub Pages</a> | 
+    <a href="https://www.linkedin.com/in/raomuhammadyasir" target="_blank">LinkedIn</a>
   </footer>
 
   <button id="topBtn">⬆</button>
 
   <script>
-    const cursor=document.getElementById('cursor');
-    document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
-
-    const toggle=document.getElementById('theme-toggle');
-    if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark';toggle.textContent='☀️';}
-    toggle.addEventListener('click',()=>{ 
-      if(document.body.dataset.theme==='dark'){document.body.dataset.theme='';toggle.textContent='🌙';localStorage.setItem('theme','');} 
-      else {document.body.dataset.theme='dark';toggle.textContent='☀️';localStorage.setItem('theme','dark');}
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
     });
 
-    const sections=document.querySelectorAll('section');
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    },{threshold:0.1});
-    sections.forEach(section=>observer.observe(section));
-
-    const scrollBar=document.getElementById('scrollBar');
-    window.addEventListener('scroll',()=>{
-      const scrollTop=document.documentElement.scrollTop;
-      const scrollHeight=document.documentElement.scrollHeight-window.innerHeight;
-      scrollBar.style.width=(scrollTop/scrollHeight*100)+"%";
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.dataset.theme = 'dark';
+      toggle.textContent = '☀️';
+    }
+    toggle.addEventListener('click', () => {
+      if (document.body.dataset.theme === 'dark') {
+        document.body.dataset.theme = '';
+        toggle.textContent = '🌙';
+        localStorage.setItem('theme', '');
+      } else {
+        document.body.dataset.theme = 'dark';
+        toggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
     });
 
-    const topBtn=document.getElementById('topBtn');
-    window.addEventListener('scroll',()=>{topBtn.style.display=window.scrollY>300?'block':'none';});
-    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-    const skillFills=document.querySelectorAll('.skill-fill');
-    const skillObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){entry.target.style.width=entry.target.dataset.fill;skillObserver.unobserve(entry.target);}
+    // Sections fade-in
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    },{threshold:0.5});
-    skillFills.forEach(fill=>skillObserver.observe(fill));
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
 
-    const counters=document.querySelectorAll('.stat h3');
-    const counterObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          const updateCount=(el)=>{
-            const target=parseInt(el.dataset.target);
-            let count=parseInt(el.innerText);
-            const increment=Math.ceil(target/100);
-            if(count<target){el.innerText=count+increment;setTimeout(()=>updateCount(el),20);} else el.innerText=target;
+    // Scroll progress
+    const scrollBar = document.getElementById('scrollBar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.width = (scrollTop / scrollHeight * 100) + "%";
+    });
+
+    // Back to top button
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Skill bar animation
+    const skillFills = document.querySelectorAll('.skill-fill');
+    const skillObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.style.width = entry.target.dataset.fill; skillObserver.unobserve(entry.target); }
+      });
+    }, { threshold: 0.5 });
+    skillFills.forEach(fill => skillObserver.observe(fill));
+
+    // Counter animation
+    const counters = document.querySelectorAll('.stat h3');
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const updateCount = (el) => {
+            const target = parseInt(el.dataset.target);
+            let count = parseInt(el.innerText);
+            const increment = Math.ceil(target / 100);
+            if (count < target) { el.innerText = count + increment; setTimeout(() => updateCount(el), 20); } else el.innerText = target;
           }
           updateCount(entry.target);
           counterObserver.unobserve(entry.target);
         }
       });
-    },{threshold:0.5});
-    counters.forEach(counter=>counterObserver.observe(counter));
+    }, { threshold: 0.5 });
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // Smooth scrolling for nav links
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
   </script>
 </body>
 </html>
