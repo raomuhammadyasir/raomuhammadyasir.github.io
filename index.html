@@ -137,28 +137,25 @@
     <section id="projects">
       <h2>📁 Featured Projects</h2>
       <div class="grid projects">
-        <!-- Word Project 1 -->
         <div class="card">
-          <a href="assets/images/word1.png" target="_blank">
-            <img src="assets/images/word1.png" alt="Word Project 1">
+          <a href="word1.png" target="_blank">
+            <img src="word1.png" alt="Word Project 1">
           </a>
           <h3>Word Project 1</h3>
           <p>Professional resume template designed in Word.</p>
         </div>
 
-        <!-- Word Project 2 -->
         <div class="card">
-          <a href="assets/images/word2.png" target="_blank">
-            <img src="assets/images/word2.png" alt="Word Project 2">
+          <a href="word2.png" target="_blank">
+            <img src="word2.png" alt="Word Project 2">
           </a>
           <h3>Word Project 2</h3>
           <p>Formal report template designed in Word.</p>
         </div>
 
-        <!-- Word Project 3 -->
         <div class="card">
-          <a href="assets/images/word3.png" target="_blank">
-            <img src="assets/images/word3.png" alt="Word Project 3">
+          <a href="word3.png" target="_blank">
+            <img src="word3.png" alt="Word Project 3">
           </a>
           <h3>Word Project 3</h3>
           <p>Invoice template designed in Word with clean layout.</p>
@@ -191,7 +188,7 @@
       </div>
     </section>
 
-    <!-- Contact / CV -->
+    <!-- Contact & CV -->
     <section id="contact">
       <h2>📬 Contact & CV</h2>
       <form action="https://formspree.io/f/xeovjrgb" method="POST">
@@ -201,7 +198,7 @@
         <button type="submit" class="btn">Send Message / Subscribe</button>
       </form>
       <br>
-      <a href="assets/CV.pdf" class="btn" download>⬇ Download My CV</a>
+      <a href="YASIR_CV.pdf" class="btn" download>⬇ Download My CV</a>
     </section>
   </main>
 
@@ -212,11 +209,9 @@
   <button id="topBtn">⬆</button>
 
   <script>
-    // Custom cursor
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
 
-    // Theme toggle
     const toggle = document.getElementById('theme-toggle');
     if(localStorage.getItem('theme')==='dark'){document.body.dataset.theme='dark'; toggle.textContent='☀️';}
     toggle.addEventListener('click',()=>{ 
@@ -224,21 +219,17 @@
       else { document.body.dataset.theme='dark'; toggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
     });
 
-    // Fade-in sections
     const sections=document.querySelectorAll('section');
     const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });},{threshold:0.1});
     sections.forEach(section=>observer.observe(section));
 
-    // Scroll bar
     const scrollBar=document.getElementById('scrollBar');
     window.addEventListener('scroll',()=>{ const scrollTop=document.documentElement.scrollTop; const scrollHeight=document.documentElement.scrollHeight-window.innerHeight; scrollBar.style.width=(scrollTop/scrollHeight*100)+"%"; });
 
-    // Back to top
     const topBtn=document.getElementById('topBtn');
     window.addEventListener('scroll',()=>{ topBtn.style.display=window.scrollY>300?'block':'none'; });
     topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-    // Animate skill bars
     const skillFills=document.querySelectorAll('.skill-fill');
     const skillObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
@@ -247,7 +238,6 @@
     },{threshold:0.5});
     skillFills.forEach(fill=>skillObserver.observe(fill));
 
-    // Animate counters
     const counters=document.querySelectorAll('.stat h3');
     const counterObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
